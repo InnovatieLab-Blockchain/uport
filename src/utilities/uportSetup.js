@@ -6,17 +6,17 @@ import { Connect, SimpleSigner } from 'uport-connect'
 //   signer: SimpleSigner('69c9446852693c00bd0a8825fad8297e4f9db34c9562a660585a0e767f993bd7')
 // })
 
-const uport = new Connect('RUG', {
-  clientId: '2ojKNym3x16kUNQPq32CNcRpuo8MDH5w5vQ',
-  network: 'rinkeby',
-  signer: SimpleSigner('11cba7f19bce365f70b85e029f048f5c4cc73ad3232db828af5107dbb865e2b6')
-})
-
-// const uport = new Connect('Hanze', {
-//   clientId: '2owvh61t2autS6WcSfXpHCWhDQsjoQs8MQj',
+// const uport = new Connect('RUG', {
+//   clientId: '2ojKNym3x16kUNQPq32CNcRpuo8MDH5w5vQ',
 //   network: 'rinkeby',
-//   signer: SimpleSigner('5348f95c79c45633b4418ba04e64f69cafa8734de474651d5436249742901f77')
+//   signer: SimpleSigner('11cba7f19bce365f70b85e029f048f5c4cc73ad3232db828af5107dbb865e2b6')
 // })
+
+const uport = new Connect('Hanze', {
+  clientId: '2owvh61t2autS6WcSfXpHCWhDQsjoQs8MQj',
+  network: 'rinkeby',
+  signer: SimpleSigner('5348f95c79c45633b4418ba04e64f69cafa8734de474651d5436249742901f77')
+})
 
 
 // const uport = new Connect('Gemeente Groningen', {
