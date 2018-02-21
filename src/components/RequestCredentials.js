@@ -1,6 +1,8 @@
 // Frameworks
 import React, { Component } from 'react'
 import { uport } from '../utilities/uportSetup'
+import { Credentials, SimpleSigner} from 'uport'
+import OpenBadge from './OpenBadge'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -39,24 +41,41 @@ const SubText = styled.p`
   font-size: 18px;
 `
 
-const RELATIONSHIPCLAIM = 'LabJas begeerder'
-const CERTIFICATECLAIM = 'InnovatieLab DUO LabJas Badge'
-
-
+var credentials = new Credentials({
+  appName: 'Rabobank',
+  address: '2otfT9XykJx5HJEquMhg4WTeLNKkx8ZkjBE',
+  network: 'rinkeby',
+  signer: SimpleSigner('13b1ed7eb7d0af503dd5f9e292356d58ece0e50221c3ba65ec8ce4c5a3b99c51')
+})
 
 class RequestCredentials extends Component {
 
   constructor (props) {
     super(props)
     this.credentialsbtnClickA = this.credentialsbtnClickA.bind(this)
+    this.state = {
+      issuer: {image: {contentUrl: ''}}
+    };
+  }
+
+  renderOpenBadge() {
+    return (
+      <OpenBadge
+        issuer={this.state.issuer}
+      />
+    );
   }
 
   credentialsbtnClickA () {
     uport.requestCredentials(
       { verified: ['Relatie'],
         notifications: true }
-    ).then((credentials) => {
-        console.log(credentials)
+    ).then((profile) => {
+        console.log(profile)
+        credentials.lookup(profile.verified[0].iss).then(profile => {
+          console.log("Issuer ", profile)
+          this.setState({issuer: profile});
+        })
     }).catch (err => {
       console.log("Niet gedeeld: ", err)
     })
@@ -76,6 +95,14 @@ class RequestCredentials extends Component {
                 </td>
                 <td>
                   <CredsButton onClick={this.credentialsbtnClickA}>Deel credential</CredsButton>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <CredsLabel>Verificatie Issuer</CredsLabel>
+                </td>
+                <td>
+                  {this.renderOpenBadge()}
                 </td>
               </tr>
             </tbody>
