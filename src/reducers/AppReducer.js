@@ -9,7 +9,7 @@ export default(state = initialState, payload) => {
         ...state,
         uport: payload.data,
         signTransactionPage: false,
-        collectCredentialsPage: true
+        requestCredentialsPage: true
       }
       
     case 'GET_CURRENT_SHARES_REQUEST':
