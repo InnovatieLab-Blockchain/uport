@@ -8,7 +8,8 @@ export default(state = initialState, payload) => {
       return {
         ...state,
         uport: payload.data,
-        signTransactionPage: true
+        signTransactionPage: false,
+        collectCredentialsPage: true
       }
       
     case 'GET_CURRENT_SHARES_REQUEST':
@@ -68,7 +69,9 @@ export default(state = initialState, payload) => {
     case 'CREDENTIALS_DEMO_COMPLETE':
       return {
         ...state,
-        registerYourAppPage: true
+        registerYourAppPage: false,
+        collectCredentialsPage: false,
+        logOutPage: true
       }
     case 'LOGOUT':
       return {

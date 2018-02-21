@@ -33,11 +33,11 @@ class Welcome extends Component {
   render () {
     return (
       <WelcomeWrap>
-        <h4>Build a Better dApp</h4>
-        <SubText>Identity and transaction infrastructure for Ethereum</SubText>
+        <h4>DUO Demo LabJas</h4>
+        <SubText>Identiteit en transactie infrastructuur voor Ethereum</SubText>
         <ConnectUport
           onClick={this.connectUport}>
-          Connect with uPort
+          Verbind via uPort
         </ConnectUport>
       </WelcomeWrap>
     )

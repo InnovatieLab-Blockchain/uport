@@ -39,8 +39,8 @@ const SubText = styled.p`
   font-size: 18px;
 `
 
-const RELATIONSHIPCLAIM = 'User'
-const CERTIFICATECLAIM = 'uPort Demo'
+const RELATIONSHIPCLAIM = 'LabJas begeerder'
+const CERTIFICATECLAIM = 'InnovatieLab DUO LabJas Badge'
 
 class CollectCredentials extends Component {
 
@@ -54,24 +54,24 @@ class CollectCredentials extends Component {
   credentialsbtnClickA () {
     uport.attestCredentials({
       sub: this.props.uport.address,
-      claim: {name: this.props.uport.name},
-      exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000,  // 30 days from now
+      claim: {uPort: this.props.uport},
+      exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
       uriHandler: (log) => { console.log(log) }
     })
   }
   credentialsbtnClickB () {
     uport.attestCredentials({
       sub: this.props.uport.address,
-      claim: {Relationship: RELATIONSHIPCLAIM},
-      exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000,  // 30 days from now
+      claim: {Relatie: RELATIONSHIPCLAIM},
+      exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
       uriHandler: (log) => { console.log(log) }
     })
   }
   credentialsbtnClickC () {
     uport.attestCredentials({
       sub: this.props.uport.address,
-      claim: {Certificate: CERTIFICATECLAIM},
-      exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000,  // 30 days from now
+      claim: {Certificaat: CERTIFICATECLAIM},
+      exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
       uriHandler: (log) => { console.log(log) }
     })
   }
@@ -79,39 +79,39 @@ class CollectCredentials extends Component {
   render (props) {
     return (
       <CredentialsWrap>
-        <h4>Reclaim ownership of your data</h4>
+        <h4>Claim eigen gegevens</h4>
         <CredentialsArea>
           <CredsTable>
             <tbody>
               <tr>
                 <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>Name: {this.props.uport.name}</CredsLabel>
+                  <CredsLabel>Naam: {this.props.uport.name}</CredsLabel>
                 </td>
                 <td>
-                  <CredsButton onClick={this.credentialsbtnClickA}>Get</CredsButton>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <CredsLabel>Relationship: User</CredsLabel>
-                </td>
-                <td>
-                  <CredsButton onClick={this.credentialsbtnClickB}>Get</CredsButton>
+                  <CredsButton onClick={this.credentialsbtnClickA}>Haal op</CredsButton>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <CredsLabel>Certificate: uPort Demo</CredsLabel>
+                  <CredsLabel>Relatie: LabJas begeerder</CredsLabel>
                 </td>
                 <td>
-                  <CredsButton onClick={this.credentialsbtnClickC}>Get</CredsButton>
+                  <CredsButton onClick={this.credentialsbtnClickB}>Haal op</CredsButton>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <CredsLabel>Certificate: DUO Demo</CredsLabel>
+                </td>
+                <td>
+                  <CredsButton onClick={this.credentialsbtnClickC}>Haal op</CredsButton>
                 </td>
               </tr>
             </tbody>
           </CredsTable>
-          <NextButton onClick={this.props.actions.credentialsDemoComplete}>Next</NextButton>
+          <NextButton onClick={this.props.actions.credentialsDemoComplete}>Volgende</NextButton>
         </CredentialsArea>
-        <SubText>Credentials take a moment to appear on your device.</SubText>
+        <SubText>Credentials duren even voordat ze op de telefoon verschijnen.</SubText>
       </CredentialsWrap>
     )
   }

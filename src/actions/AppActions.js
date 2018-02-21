@@ -85,6 +85,7 @@ export const buySharesDemoComplete = (data) => {
 export const credentialsDemoComplete = (data) => {
   return {
     type: 'CREDENTIALS_DEMO_COMPLETE'
+    //type: 'LOGOUT'
   }
 }
 
@@ -95,5 +96,6 @@ export const credentialsDemoComplete = (data) => {
 export const registerAppAreaComplete = (data) => {
   return {
     type: 'LOGOUT'
+    //type: 'CREDENTIALS_DEMO_COMPLETE'
   }
 }

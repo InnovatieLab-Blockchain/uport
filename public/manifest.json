@@ -2,13 +2,13 @@
     "name": "uPort",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
+            "src": "/logoduo200x100.png",
+            "sizes": "200x100",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
+            "src": "/logoduo.png",
+            "sizes": "400x200",
             "type": "image/png"
         }
     ],
