@@ -1,6 +1,6 @@
 // Frameworks
 import React, { Component } from 'react'
-import { uport } from '../utilities/uportSetup'
+import { verifier } from '../utilities/uportSetup'
 import { Credentials, SimpleSigner} from 'uport'
 import OpenBadge from './OpenBadge'
 
@@ -67,7 +67,7 @@ class RequestCredentials extends Component {
   }
 
   credentialsbtnClickA () {
-    uport.requestCredentials(
+    verifier.requestCredentials(
       { verified: ['Relatie'],
         notifications: true }
     ).then((profile) => {

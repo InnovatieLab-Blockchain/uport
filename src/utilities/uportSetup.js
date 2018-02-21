@@ -1,10 +1,10 @@
 import { Connect, SimpleSigner } from 'uport-connect'
 
-// const uport = new Connect('DUO', {
-//   clientId: '2oynp4geSgBwqkQebaYtexB32rCNbPmLu5K',
-//   network: 'rinkeby',
-//   signer: SimpleSigner('69c9446852693c00bd0a8825fad8297e4f9db34c9562a660585a0e767f993bd7')
-// })
+const uport = new Connect('DUO', {
+  clientId: '2oynp4geSgBwqkQebaYtexB32rCNbPmLu5K',
+  network: 'rinkeby',
+  signer: SimpleSigner('69c9446852693c00bd0a8825fad8297e4f9db34c9562a660585a0e767f993bd7')
+})
 
 // const uport = new Connect('RUG', {
 //   clientId: '2ojKNym3x16kUNQPq32CNcRpuo8MDH5w5vQ',
@@ -25,7 +25,7 @@ import { Connect, SimpleSigner } from 'uport-connect'
 //   signer: SimpleSigner('b564ce9e5f2776885626f1a0eb3b880af19ac9d04b96e6cc58c7f51906be7052')
 // })
 
-const uport = new Connect('Rabobank', {
+const verifier = new Connect('Rabobank', {
   clientId: '2otfT9XykJx5HJEquMhg4WTeLNKkx8ZkjBE',
   network: 'rinkeby',
   signer: SimpleSigner('13b1ed7eb7d0af503dd5f9e292356d58ece0e50221c3ba65ec8ce4c5a3b99c51')
@@ -44,4 +44,4 @@ const uport = new Connect('Rabobank', {
 // })
 
 const web3 = uport.getWeb3()
-export { web3, uport }
+export { web3, uport, verifier }
