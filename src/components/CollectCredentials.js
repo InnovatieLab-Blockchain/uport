@@ -1,6 +1,6 @@
 // Frameworks
 import React, { Component } from 'react'
-import { uport } from '../utilities/uportSetup'
+import { attester1, attester2, attester3 } from '../utilities/uportSetup'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -39,9 +39,6 @@ const SubText = styled.p`
   font-size: 18px;
 `
 
-const RELATIONSHIPCLAIM = 'LabJas begeerder'
-const CERTIFICATECLAIM = 'InnovatieLab DUO LabJas Badge'
-
 class CollectCredentials extends Component {
 
   constructor (props) {
@@ -52,7 +49,7 @@ class CollectCredentials extends Component {
   }
 
   credentialsbtnClickA () {
-    uport.attestCredentials({
+    attester1.attestCredentials({
       sub: this.props.uport.address,
       claim: {OpenBadge1: {naam: 'OpenBadge1', description: 'Dit is OpenBadge 1' }},
       exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
@@ -60,7 +57,7 @@ class CollectCredentials extends Component {
     })
   }
   credentialsbtnClickB () {
-    uport.attestCredentials({
+    attester2.attestCredentials({
       sub: this.props.uport.address,
       claim: {OpenBadge2: {naam: 'OpenBadge2', description: 'Dit is OpenBadge 2' }},
       exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
@@ -68,9 +65,9 @@ class CollectCredentials extends Component {
     })
   }
   credentialsbtnClickC () {
-    uport.attestCredentials({
+    attester3.attestCredentials({
       sub: this.props.uport.address,
-      claim: {OpenBadge3: {naam: 'OpenBadge3', description: 'Dit is OpenBadge 3' }},
+      claim: {Verblijfsvergunning: {naam: 'Verblijfsvergunning', description: 'Dit is een Verblijfsvergunning'} },
       exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
       uriHandler: (log) => { console.log(log) }
     })

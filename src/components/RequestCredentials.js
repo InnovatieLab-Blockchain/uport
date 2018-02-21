@@ -52,7 +52,9 @@ class RequestCredentials extends Component {
 
   constructor (props) {
     super(props)
-    this.credentialsbtnClickA = this.credentialsbtnClickA.bind(this)
+    this.credentialsbtnClick1 = this.credentialsbtnClick1.bind(this)
+    this.credentialsbtnClick2 = this.credentialsbtnClick2.bind(this)
+    this.credentialsbtnClick3 = this.credentialsbtnClick3.bind(this)
     this.state = {
       issuer: {image: {contentUrl: ''}}
     };
@@ -98,7 +100,7 @@ class RequestCredentials extends Component {
 
   credentialsbtnClick3 () {
     verifier3.requestCredentials(
-      { verified: ['OpenBadge3'],
+      { verified: ['Verblijfsvergunning'],
         notifications: true }
     ).then((profile) => {
         console.log(profile)
@@ -144,10 +146,10 @@ class RequestCredentials extends Component {
           <tbody>
           <tr>
             <td style={{"paddingRight":"8em"}}>
-              <CredsLabel>OpenBadge3</CredsLabel>
+              <CredsLabel>Verblijfsvergunning</CredsLabel>
             </td>
             <td>
-              <CredsButton onClick={this.credentialsbtnClick2}>Deel met {verifier3.name}</CredsButton>
+              <CredsButton onClick={this.credentialsbtnClick3}>Deel met {verifier3.name}</CredsButton>
             </td>
           </tr> 
         </tbody>
