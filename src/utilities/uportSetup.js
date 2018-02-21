@@ -12,18 +12,18 @@ import { Connect, SimpleSigner } from 'uport-connect'
 //   signer: SimpleSigner('11cba7f19bce365f70b85e029f048f5c4cc73ad3232db828af5107dbb865e2b6')
 // })
 
-const uport = new Connect('Hanze', {
-  clientId: '2owvh61t2autS6WcSfXpHCWhDQsjoQs8MQj',
-  network: 'rinkeby',
-  signer: SimpleSigner('5348f95c79c45633b4418ba04e64f69cafa8734de474651d5436249742901f77')
-})
-
-
-// const uport = new Connect('Gemeente Groningen', {
-//   clientId: '2on4iSsmcnMQ8ZtmN8bdoLyi78rE1MMaZMC',
+// const uport = new Connect('Hanze', {
+//   clientId: '2owvh61t2autS6WcSfXpHCWhDQsjoQs8MQj',
 //   network: 'rinkeby',
-//   signer: SimpleSigner('b564ce9e5f2776885626f1a0eb3b880af19ac9d04b96e6cc58c7f51906be7052')
+//   signer: SimpleSigner('5348f95c79c45633b4418ba04e64f69cafa8734de474651d5436249742901f77')
 // })
+
+
+const uport = new Connect('Gemeente Groningen', {
+  clientId: '2on4iSsmcnMQ8ZtmN8bdoLyi78rE1MMaZMC',
+  network: 'rinkeby',
+  signer: SimpleSigner('b564ce9e5f2776885626f1a0eb3b880af19ac9d04b96e6cc58c7f51906be7052')
+})
 
 // const uport = new Connect('Rabobank', {
 //   clientId: '2otfT9XykJx5HJEquMhg4WTeLNKkx8ZkjBE',
