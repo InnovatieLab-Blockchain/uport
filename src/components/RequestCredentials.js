@@ -96,17 +96,10 @@ class RequestCredentials extends Component {
                 <td>
                   <CredsButton onClick={this.credentialsbtnClickA}>Deel credential</CredsButton>
                 </td>
-              </tr>
-              <tr>
-                <td>
-                  <CredsLabel>Verificatie Issuer</CredsLabel>
-                </td>
-                <td>
-                  {this.renderOpenBadge()}
-                </td>
-              </tr>
+              </tr> 
             </tbody>
           </CredsTable>
+          {this.renderOpenBadge()}
           <NextButton onClick={this.props.actions.credentialsDemoComplete}>Volgende</NextButton>
         </CredentialsArea>
         <SubText>Let op met delen van credentials</SubText>

@@ -109,7 +109,7 @@ class CollectCredentials extends Component {
               </tr>
             </tbody>
           </CredsTable>
-          <NextButton onClick={this.props.actions.credentialsDemoComplete}>Volgende</NextButton>
+          <NextButton onClick={this.props.actions.credentialsCollectComplete}>Volgende</NextButton>
         </CredentialsArea>
         <SubText>Credentials duren even voordat ze op de telefoon verschijnen.</SubText>
       </CredentialsWrap>
