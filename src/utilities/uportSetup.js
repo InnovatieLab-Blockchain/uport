@@ -25,23 +25,23 @@ const uport = new Connect('DUO', {
 //   signer: SimpleSigner('b564ce9e5f2776885626f1a0eb3b880af19ac9d04b96e6cc58c7f51906be7052')
 // })
 
-const verifier = new Connect('Rabobank', {
+const verifier1 = new Connect('Rabobank', {
   clientId: '2otfT9XykJx5HJEquMhg4WTeLNKkx8ZkjBE',
   network: 'rinkeby',
   signer: SimpleSigner('13b1ed7eb7d0af503dd5f9e292356d58ece0e50221c3ba65ec8ce4c5a3b99c51')
 })
 
-// const uport = new Connect('Gasunie', {
-//   clientId: '2oxFdwonXQvti9Pc28XaGvxvDFmhPrxernU',
-//   network: 'rinkeby',
-//   signer: SimpleSigner('d99b508accb2bcd22a01fcca5010acffa3ea1579732e74dce45c48d523b65b8b')
-// })
+const verifier2 = new Connect('Gasunie', {
+  clientId: '2oxFdwonXQvti9Pc28XaGvxvDFmhPrxernU',
+  network: 'rinkeby',
+  signer: SimpleSigner('d99b508accb2bcd22a01fcca5010acffa3ea1579732e74dce45c48d523b65b8b')
+})
 
-// const uport = new Connect('IND', {
-//   clientId: '2oehyFhgXUbMTrhuGggtz8dGKyb8i5RfSKB',
-//   network: 'rinkeby or ropsten or kovan',
-//   signer: SimpleSigner('bfbe8c269238fe9f7fe908f3ddf542e46e578652ed58c2625da886a291cd523c')
-// })
+const verifier3 = new Connect('IND', {
+  clientId: '2oehyFhgXUbMTrhuGggtz8dGKyb8i5RfSKB',
+  network: 'rinkeby or ropsten or kovan',
+  signer: SimpleSigner('bfbe8c269238fe9f7fe908f3ddf542e46e578652ed58c2625da886a291cd523c')
+})
 
 const web3 = uport.getWeb3()
-export { web3, uport, verifier }
+export { web3, uport, verifier1, verifier2, verifier3 }

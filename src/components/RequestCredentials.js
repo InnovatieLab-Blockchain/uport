@@ -1,6 +1,6 @@
 // Frameworks
 import React, { Component } from 'react'
-import { verifier } from '../utilities/uportSetup'
+import { verifier1, verifier2, verifier3 } from '../utilities/uportSetup'
 import { Credentials, SimpleSigner} from 'uport'
 import OpenBadge from './OpenBadge'
 
@@ -66,9 +66,9 @@ class RequestCredentials extends Component {
     );
   }
 
-  credentialsbtnClickA () {
-    verifier.requestCredentials(
-      { verified: ['Relatie'],
+  credentialsbtnClick1 () {
+    verifier1.requestCredentials(
+      { verified: ['OpenBadge1'],
         notifications: true }
     ).then((profile) => {
         console.log(profile)
@@ -81,6 +81,35 @@ class RequestCredentials extends Component {
     })
   }
 
+  credentialsbtnClick2 () {
+    verifier2.requestCredentials(
+      { verified: ['OpenBadge2'],
+        notifications: true }
+    ).then((profile) => {
+        console.log(profile)
+        credentials.lookup(profile.verified[0].iss).then(profile => {
+          console.log("Issuer ", profile)
+          this.setState({issuer: profile});
+        })
+    }).catch (err => {
+      console.log("Niet gedeeld: ", err)
+    })
+  }
+
+  credentialsbtnClick3 () {
+    verifier3.requestCredentials(
+      { verified: ['OpenBadge3'],
+        notifications: true }
+    ).then((profile) => {
+        console.log(profile)
+        credentials.lookup(profile.verified[0].iss).then(profile => {
+          console.log("Issuer ", profile)
+          this.setState({issuer: profile});
+        })
+    }).catch (err => {
+      console.log("Niet gedeeld: ", err)
+    })
+  }
 
   render (props) {
     return (
@@ -91,13 +120,37 @@ class RequestCredentials extends Component {
             <tbody>
               <tr>
                 <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>Naam: {this.props.uport.name}</CredsLabel>
+                  <CredsLabel>OpenBadge1</CredsLabel>
                 </td>
                 <td>
-                  <CredsButton onClick={this.credentialsbtnClickA}>Deel credential</CredsButton>
+                  <CredsButton onClick={this.credentialsbtnClick1}>Deel met {verifier1.name}</CredsButton>
                 </td>
               </tr> 
             </tbody>
+          </CredsTable>
+          <CredsTable>
+          <tbody>
+          <tr>
+            <td style={{"paddingRight":"8em"}}>
+              <CredsLabel>OpenBadge2</CredsLabel>
+            </td>
+            <td>
+              <CredsButton onClick={this.credentialsbtnClick2}>Deel met {verifier2.name}</CredsButton>
+            </td>
+          </tr> 
+        </tbody>
+          </CredsTable>
+          <CredsTable>
+          <tbody>
+          <tr>
+            <td style={{"paddingRight":"8em"}}>
+              <CredsLabel>OpenBadge3</CredsLabel>
+            </td>
+            <td>
+              <CredsButton onClick={this.credentialsbtnClick2}>Deel met {verifier3.name}</CredsButton>
+            </td>
+          </tr> 
+        </tbody>
           </CredsTable>
           {this.renderOpenBadge()}
           <NextButton onClick={this.props.actions.credentialsDemoComplete}>Volgende</NextButton>

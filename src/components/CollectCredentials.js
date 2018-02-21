@@ -54,7 +54,7 @@ class CollectCredentials extends Component {
   credentialsbtnClickA () {
     uport.attestCredentials({
       sub: this.props.uport.address,
-      claim: {uPort: this.props.uport},
+      claim: {OpenBadge1: {naam: 'OpenBadge1', description: 'Dit is OpenBadge 1' }},
       exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
       uriHandler: (log) => { console.log(log) }
     })
@@ -62,7 +62,7 @@ class CollectCredentials extends Component {
   credentialsbtnClickB () {
     uport.attestCredentials({
       sub: this.props.uport.address,
-      claim: {Relatie: RELATIONSHIPCLAIM},
+      claim: {OpenBadge2: {naam: 'OpenBadge2', description: 'Dit is OpenBadge 2' }},
       exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
       uriHandler: (log) => { console.log(log) }
     })
@@ -70,7 +70,7 @@ class CollectCredentials extends Component {
   credentialsbtnClickC () {
     uport.attestCredentials({
       sub: this.props.uport.address,
-      claim: {Certificaat: CERTIFICATECLAIM},
+      claim: {OpenBadge3: {naam: 'OpenBadge3', description: 'Dit is OpenBadge 3' }},
       exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
       uriHandler: (log) => { console.log(log) }
     })
@@ -85,7 +85,7 @@ class CollectCredentials extends Component {
             <tbody>
               <tr>
                 <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>Naam: {this.props.uport.name}</CredsLabel>
+                  <CredsLabel>OpenBadge 1</CredsLabel>
                 </td>
                 <td>
                   <CredsButton onClick={this.credentialsbtnClickA}>Haal op</CredsButton>
@@ -93,7 +93,7 @@ class CollectCredentials extends Component {
               </tr>
               <tr>
                 <td>
-                  <CredsLabel>Relatie: LabJas begeerder</CredsLabel>
+                  <CredsLabel>OpenBadge2</CredsLabel>
                 </td>
                 <td>
                   <CredsButton onClick={this.credentialsbtnClickB}>Haal op</CredsButton>
@@ -101,7 +101,7 @@ class CollectCredentials extends Component {
               </tr>
               <tr>
                 <td>
-                  <CredsLabel>Certificate: DUO Demo</CredsLabel>
+                  <CredsLabel>OpenBadge3</CredsLabel>
                 </td>
                 <td>
                   <CredsButton onClick={this.credentialsbtnClickC}>Haal op</CredsButton>
@@ -111,7 +111,7 @@ class CollectCredentials extends Component {
           </CredsTable>
           <NextButton onClick={this.props.actions.credentialsCollectComplete}>Volgende</NextButton>
         </CredentialsArea>
-        <SubText>Credentials duren even voordat ze op de telefoon verschijnen.</SubText>
+        <SubText>Credentials duren even voordat ze in de uPort smartphone App verschijnen.</SubText>
       </CredentialsWrap>
     )
   }
