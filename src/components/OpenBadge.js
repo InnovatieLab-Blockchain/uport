@@ -12,7 +12,7 @@ const CredsLabel = styled.label`
 
 function OpenBadge(props) {
     let image = ''
-    if (props.issuer.image.contentUrl == '') {
+    if (props.issuer.image.contentUrl === '') {
         image = '/public/favicon-32x32.png'
     } else {
         image = 'https://ipfs.infura.io' + props.issuer.image.contentUrl
