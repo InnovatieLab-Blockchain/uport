@@ -1,13 +1,19 @@
-# Do the npm install or yarn install in the full image
-FROM mhart/alpine-node:8
-WORKDIR /app
-COPY package.json ./
-RUN npm install --production
+FROM node:carbon
 
-# And then copy over node_modules, etc from that stage to the smaller base image
-FROM mhart/alpine-node:base-8
-WORKDIR /app
-COPY --from=0 /app .
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
+RUN npm install
+# If you are building your code for production
+# RUN npm install --only=production
+
+# Bundle app source
 COPY . .
-EXPOSE 3000
-CMD ["npm", "start"]
+
+EXPOSE 8080
+CMD [ "npm", "start" ]
