@@ -7,7 +7,7 @@ import * as AppActions from '../actions/AppActions'
 import Assertion from './Assertion'
 import BadgeClass from './BadgeClass'
 
-import { getBadge, getIssuer, getRecipient } from '../utilities/getAssertion'
+import { getBadge, getIssuer, getRecipient, getAssertionProperties } from '../utilities/getAssertion'
 
 import { getId, getType, getContext, getName, getBadgeIssuer, getAlignment } from '../utilities/getBadgeClass'
 
@@ -21,9 +21,6 @@ const OpenBadgeWrap = styled.section`
 const OpenBadgeArea = styled.div``
 const CurrentOpenBadgeArea = styled.div`
   margin-bottom: 20px;
-`
-const CurrentOpenBadge = styled.span`
-  color: white;
 `
 const NextButton = styled.button`
   margin-top: 20px;
@@ -45,12 +42,13 @@ class GetOpenBadge extends Component {
     getBadge(actions)
     getRecipient(actions)
     getIssuer(actions)
-    getId(actions)
-    getBadgeIssuer(actions)
-    getType(actions)
-    getContext(actions)
-    getName(actions)
-    getAlignment(actions)
+    getAssertionProperties(actions)
+    // getId(actions)
+    // getBadgeIssuer(actions)
+    // getType(actions)
+    // getContext(actions)
+    // getName(actions)
+    // getAlignment(actions)
   }
 
   componentDidMount () {
@@ -64,6 +62,7 @@ class GetOpenBadge extends Component {
         badge={this.props.badge} 
         issuer={this.props.issuer}
         recipient={this.props.recipient}
+        assertionProperties={this.props.assertionProperties}
       />
     );
   }
@@ -114,6 +113,7 @@ const mapStateToProps = (state, props) => {
     gettingIssuer: state.App.gettingIssuer,
     issuer: state.App.issuer,
     gettingRecipient: state.App.gettingRecipient,
+    assertionProperties: state.App.assertionProperties,
     recipient: state.App.recipient,
     badgeId: state.App.badgeId,
     badgeType: state.App.badgeType,

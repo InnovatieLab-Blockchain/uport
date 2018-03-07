@@ -1,11 +1,11 @@
 import { web3 } from './uportSetup'
 
 
-const abi = require('../contract-compiled/Issuer.json').abi
+const abi = require('../../build/contracts/Issuer.json').abi
 
 function IssuerContractSetup () {
   let IssuerABI = web3.eth.contract(abi)
-  let IssuerContractObj = IssuerABI.at('0x06aacf1ab9460c3925f71ef1b74f206aada978ee')
+  let IssuerContractObj = IssuerABI.at('0x30753e4a8aad7f8597332e813735def5dd395028')
   return IssuerContractObj
 }
 

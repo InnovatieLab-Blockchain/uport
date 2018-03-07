@@ -17,4 +17,8 @@ contract Recipient {
     function Recipient(string typeOb1, string id1, string name1) public {
         setProfile(typeOb1, id1, name1);
     }
+    
+    function getProperties() public view returns(string,string,string,string,address) {
+        return(id,typeOb,context,name,owner);
+    }
 }

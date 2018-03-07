@@ -10,7 +10,27 @@ const CredsLabel = styled.label`
   top: 10px;
 `
 
+import createFragment from 'react-addons-create-fragment';
+ 
+function Swapper(props) {
+  let children;
+  if (props.swapped) {
+    children = createFragment({
+      right: props.rightChildren,
+      left: props.leftChildren
+    });
+  } else {
+    children = createFragment({
+      left: props.leftChildren,
+      right: props.rightChildren
+    });
+  }
+  return <div>{children}</div>;
+}
+
 function Assertion(props) {
+  console.log(props.assertionProperties)
+
     return (
             <CredsTable>
             <tbody>
@@ -36,6 +56,14 @@ function Assertion(props) {
                 </td>
                 <td>
                   <CredsLabel>{props.issuer}</CredsLabel>
+                </td>
+              </tr>
+              <tr>
+                <td style={{"paddingRight":"8em"}}>
+                  <CredsLabel>Properties</CredsLabel>
+                </td>
+                <td>
+                  {/* {props.assertionProperties} */}
                 </td>
               </tr>
             </tbody>

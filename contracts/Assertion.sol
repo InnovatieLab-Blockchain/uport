@@ -49,4 +49,9 @@ contract Assertion {
     function setVerificationType(string verificationType1) public onlyOwner {
         verificationType = verificationType1;
     }
+
+    function getProperties() public view returns(string,string,string,string,address,address,address,address,uint) {
+        return(id,typeOb,context,name,owner,recipient,issuer,badge,issuedOn);
+    }
+
 }

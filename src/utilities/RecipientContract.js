@@ -1,11 +1,11 @@
 import { web3 } from './uportSetup'
 
 
-const abi = require('../contract-compiled/Recipient.json').abi
+const abi = require('../../build/contracts/Recipient.json').abi
 
 function RecipientContractSetup () {
   let RecipientABI = web3.eth.contract(abi)
-  let RecipientContractObj = RecipientABI.at('0xb37c6a5b8810184b622ec7a15463d6ae3936c1d1')
+  let RecipientContractObj = RecipientABI.at('0xfb88de099e13c3ed21f80a7a1e49f8caecf10df6')
   return RecipientContractObj
 }
 

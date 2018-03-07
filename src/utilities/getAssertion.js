@@ -1,5 +1,8 @@
 import AssertionContract from '../utilities/AssertionContract'
 
+
+console.log(AssertionContract )
+
 export async function getBadge(actions) {
   actions.getBadgeREQUEST()
   AssertionContract.badge
@@ -39,6 +42,20 @@ export async function getIssuer(actions) {
       return issuer
     })
 }
+
+export async function getAssertionProperties(actions) {
+  actions.getAssertionPropertiesREQUEST()
+  AssertionContract.getProperties
+    .call((error, props) => {
+      if (error) {
+        actions.getAssertionPropertiesERROR(error)
+        throw error
+      }
+      actions.getAssertionPropertiesSUCCESS(props)
+      return props
+    })
+}
+
 
 // function Unix_timestamp(t)
 // {

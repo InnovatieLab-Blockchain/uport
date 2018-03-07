@@ -49,6 +49,10 @@ contract BadgeClass {
         name = name1;
     }
 
+    function getProperties() public view returns(string,string,string,string,address,address[]) {
+        return(id,typeOb,context,name,issuer,alignment);
+    }
+
     function setIssuer(address issuer1) public onlyOwner { 
         issuer = issuer1;
     }

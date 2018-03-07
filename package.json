@@ -53,10 +53,12 @@
     "mnid": "^0.1.1",
     "qrious": "^2.2.0",
     "react": "^15.4.2",
+    "react-addons-create-fragment": "^15.6.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
     "styled-components": "^1.4.5",
+    "truffle-contract": "^3.0.4",
     "uport-connect": "^0.7.0",
     "web3": "^0.19.1"
   },

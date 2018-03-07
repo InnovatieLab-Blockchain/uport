@@ -50,6 +50,25 @@ export const getRecipientERROR = (data) => {
   }
 }
 
+export const getAssertionPropertiesREQUEST = () => {
+  return {
+    type: 'GET_ASSERTION_PROPERTIES_REQUEST'
+  }
+}
+export const getAssertionPropertiesSUCCESS = (data) => {
+  return {
+    type: 'GET_ASSERTION_PROPERTIES_SUCCESS',
+    data
+  }
+}
+export const getAssertionPropertiesERROR = (data) => {
+  return {
+    type: 'GET_ASSERTION_PROPERTIES_ERROR',
+    data
+  }
+}
+
+
 export const getIssuerREQUEST = () => {
   return {
     type: 'GET_ISSUER_REQUEST'
@@ -67,7 +86,6 @@ export const getIssuerERROR = (data) => {
     data
   }
 }
-
 
 // //////////////////////////////////////////////
 // Get BadgeClass props

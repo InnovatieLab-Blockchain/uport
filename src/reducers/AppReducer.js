@@ -48,6 +48,24 @@ export default(state = initialState, payload) => {
         gettingIssuer: false,
         error: payload.data
       }
+      case 'GET_ASSERTION_PROPERTIES_REQUEST':
+      return {
+        ...state,
+        gettingAssertionProperties: true
+      }
+    case 'GET_ASSERTION_PROPERTIES_SUCCESS':
+      return {
+        ...state,
+        gettingAssertionProperties: false,
+        assertionProperties: payload.data
+      }
+    case 'GET_ASSERTION_PROPERTIES_ERROR':
+      return {
+        ...state,
+        gettingAssertionProperties: false,
+        error: payload.data
+      }
+
       case 'GET_RECIPIENT_REQUEST':
       return {
         ...state,
