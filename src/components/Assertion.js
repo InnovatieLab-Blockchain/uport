@@ -10,26 +10,10 @@ const CredsLabel = styled.label`
   top: 10px;
 `
 
-import createFragment from 'react-addons-create-fragment';
- 
-function Swapper(props) {
-  let children;
-  if (props.swapped) {
-    children = createFragment({
-      right: props.rightChildren,
-      left: props.leftChildren
-    });
-  } else {
-    children = createFragment({
-      left: props.leftChildren,
-      right: props.rightChildren
-    });
-  }
-  return <div>{children}</div>;
-}
+// import createFragment from 'react-addons-create-fragment';
 
 function Assertion(props) {
-  console.log(props.assertionProperties)
+  //console.log(props.assertionProperties)
 
     return (
             <CredsTable>

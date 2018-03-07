@@ -42,13 +42,13 @@ class GetOpenBadge extends Component {
     getBadge(actions)
     getRecipient(actions)
     getIssuer(actions)
-    getAssertionProperties(actions)
-    // getId(actions)
-    // getBadgeIssuer(actions)
-    // getType(actions)
-    // getContext(actions)
-    // getName(actions)
-    // getAlignment(actions)
+    //getAssertionProperties(actions)
+    getId(actions)
+    getBadgeIssuer(actions)
+    getType(actions)
+    getContext(actions)
+    getName(actions)
+    getAlignment(actions)
   }
 
   componentDidMount () {
@@ -62,7 +62,7 @@ class GetOpenBadge extends Component {
         badge={this.props.badge} 
         issuer={this.props.issuer}
         recipient={this.props.recipient}
-        assertionProperties={this.props.assertionProperties}
+        //assertionProperties={this.props.assertionProperties}
       />
     );
   }

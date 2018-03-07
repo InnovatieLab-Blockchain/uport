@@ -1,4 +1,4 @@
-import BadgeClassContract from '../utilities/BadgeClassContract'
+import BadgeClassContract from './BadgeClassContract'
 
 export async function getId(actions) {
   actions.getBadgeIdREQUEST()

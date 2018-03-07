@@ -1,4 +1,4 @@
-import AssertionContract from '../utilities/AssertionContract'
+import AssertionContract from './AssertionContract'
 
 
 console.log(AssertionContract )
