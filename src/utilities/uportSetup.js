@@ -1,4 +1,5 @@
 import { Connect, SimpleSigner } from 'uport-connect'
+var mnid = require('mnid')
 
 const uport = new Connect('DUO', {
   clientId: '2oynp4geSgBwqkQebaYtexB32rCNbPmLu5K',
@@ -43,6 +44,12 @@ const attester3 = new Connect('IND', {
   network: 'rinkeby',
   signer: SimpleSigner('bfbe8c269238fe9f7fe908f3ddf542e46e578652ed58c2625da886a291cd523c')
 })
+
+
+  const decodedId = mnid.decode('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')
+  console.log('Decoded id:', decodedId)
+
+
 
 const web3 = uport.getWeb3()
 export { web3, uport, verifier1, verifier2, verifier3, attester1, attester2, attester3 }

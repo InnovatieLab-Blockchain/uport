@@ -98,7 +98,7 @@ class CollectCredentials extends Component {
               </tr>
               <tr>
                 <td>
-                  <CredsLabel>OpenBadge3</CredsLabel>
+                  <CredsLabel>Verblijfsvergunning</CredsLabel>
                 </td>
                 <td>
                   <CredsButton onClick={this.credentialsbtnClickC}>Haal op</CredsButton>

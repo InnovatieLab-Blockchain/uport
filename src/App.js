@@ -13,6 +13,7 @@ import Welcome from './components/Welcome'
 import SignTransaction from './components/SignTransaction'
 import CollectCredentials from './components/CollectCredentials'
 import RequestCredentials from './components/RequestCredentials'
+import GetOpenBadge from './components/GetOpenBadge'
 import RegisterYourApp from './components/RegisterYourApp'
 import LogOut from './components/LogOut'
 
@@ -52,6 +53,12 @@ class App extends Component {
               : null
           }
           {
+            this.props.getOpenBadgePage &&
+            !this.props.registerYourAppPage
+              ? <GetOpenBadge />
+              : null
+          }
+          {
             this.props.requestCredentialsPage &&
             !this.props.registerYourAppPage
               ? <RequestCredentials />
@@ -87,6 +94,7 @@ const mapStateToProps = (state, props) => {
     collectCredentialsPage: state.App.collectCredentialsPage,
     requestCredentialsPage: state.App.requestCredentialsPage,
     registerYourAppPage: state.App.registerYourAppPage,
+    getOpenBadgePage: state.App.getOpenBadgePage,
     logOutPage: state.App.logOutPage
   }
 }

@@ -4,61 +4,174 @@ let initialState = {
 
 export default(state = initialState, payload) => {
   switch (payload.type) {
+
     case 'CONNECT_UPORT':
       return {
         ...state,
         uport: payload.data,
         signTransactionPage: false,
+        //getOpenBadgePage: true,
         collectCredentialsPage: true,
       }
-      
-    case 'GET_CURRENT_SHARES_REQUEST':
+    
+      case 'GET_BADGE_REQUEST':
       return {
         ...state,
-        gettingShares: true
+        gettingBadge: true
       }
-    case 'GET_CURRENT_SHARES_SUCCESS':
+    case 'GET_BADGE_SUCCESS':
       return {
         ...state,
-        gettingShares: false,
-        sharesTotal: payload.data
+        gettingBadge: false,
+        badge: payload.data
       }
-    case 'GET_CURRENT_SHARES_ERROR':
+    case 'GET_BADGE_ERROR':
       return {
         ...state,
-        gettingShares: false,
+        gettingBadge: false,
+        error: payload.data
+      }      
+    case 'GET_ISSUER_REQUEST':
+      return {
+        ...state,
+        gettingIssuer: true
+      }
+    case 'GET_ISSUER_SUCCESS':
+      return {
+        ...state,
+        gettingIssuer: false,
+        issuer: payload.data
+      }
+    case 'GET_ISSUER_ERROR':
+      return {
+        ...state,
+        gettingIssuer: false,
         error: payload.data
       }
-    case 'UPDATE_SHARES_INPUT':
+      case 'GET_RECIPIENT_REQUEST':
       return {
         ...state,
-        sharesInput: payload.data
+        gettingRecipient: true
+      }
+    case 'GET_RECIPIENT_SUCCESS':
+      return {
+        ...state,
+        gettingRecipient: false,
+        recipient: payload.data
+      }
+    case 'GET_RECIPIENT_ERROR':
+      return {
+        ...state,
+        gettingRecipient: false,
+        error: payload.data
       }
 
-    case 'BUY_SHARES_REQUEST':
+      case 'GET_BADGE_ID_REQUEST':
       return {
         ...state,
-        confirmingInProgress: true
+        gettingBadgeId: true
       }
-    case 'BUY_SHARES_PENDING':
+    case 'GET_BADGE_ID_SUCCESS':
       return {
         ...state,
-        buyingInProgress: true,
-        confirmingInProgress: false
+        gettingBadgeId: false,
+        badgeId: payload.data
       }
-    case 'BUY_SHARES_SUCCESS':
+    case 'GET_BADGE_ID_ERROR':
       return {
         ...state,
-        txHash: payload.tx,
-        buyingInProgress: false,
-        sharesTotal: payload.data
-      }
-    case 'BUY_SHARES_ERROR':
+        gettingBadgeId: false,
+        error: payload.data
+      }  
+
+      case 'GET_BADGE_TYPE_REQUEST':
       return {
         ...state,
-        buyingInProgress: false,
-        sharesTotal: payload.data
+        gettingBadgeType: true
       }
+    case 'GET_BADGE_TYPE_SUCCESS':
+      return {
+        ...state,
+        gettingBadgeType: false,
+        badgeType: payload.data
+      }
+    case 'GET_BADGE_TYPE_ERROR':
+      return {
+        ...state,
+        gettingBadgeType: false,
+        error: payload.data
+      }  
+
+      case 'GET_BADGE_CONTEXT_REQUEST':
+      return {
+        ...state,
+        gettingBadgeContext: true
+      }
+    case 'GET_BADGE_CONTEXT_SUCCESS':
+      return {
+        ...state,
+        gettingBadgeContext: false,
+        badgeContext: payload.data
+      }
+    case 'GET_BADGE_CONTEXT_ERROR':
+      return {
+        ...state,
+        gettingBadgeId: false,
+        error: payload.data
+      }  
+
+      case 'GET_BADGE_NAME_REQUEST':
+      return {
+        ...state,
+        gettingBadgeName: true
+      }
+    case 'GET_BADGE_NAME_SUCCESS':
+      return {
+        ...state,
+        gettingBadgeName: false,
+        badgeName: payload.data
+      }
+    case 'GET_BADGE_NAME_ERROR':
+      return {
+        ...state,
+        gettingBadgeId: false,
+        error: payload.data
+      }  
+    case 'GET_BADGE_ISSUER_REQUEST':
+      return {
+        ...state,
+        gettingBadgeIssuer: true
+      }
+    case 'GET_BADGE_ISSUER_SUCCESS':
+      return {
+        ...state,
+        gettingBadgeIssuer: false,
+        badgeIssuer: payload.data
+      }
+    case 'GET_BADGE_ISSUER_ERROR':
+      return {
+        ...state,
+        gettingBadgeIssuer: false,
+        error: payload.data
+      }  
+
+      case 'GET_BADGE_ALIGNMENT_REQUEST':
+      return {
+        ...state,
+        gettingBadgeAlignment: true
+      }
+    case 'GET_BADGE_ALIGNMENT_SUCCESS':
+      return {
+        ...state,
+        gettingBadgeAlignment: false,
+        badgeAlignment: payload.data
+      }
+    case 'GET_BADGE_ALIGNMENT_ERROR':
+      return {
+        ...state,
+        gettingBadgeAlignment: false,
+        error: payload.data
+      }  
 
     case 'BUY_SHARES_DEMO_COMPLETE':
       return {
@@ -70,14 +183,20 @@ export default(state = initialState, payload) => {
         ...state,
         registerYourAppPage: false,
         collectCredentialsPage: false,
-        requestCredentialsPage: true
+        getOpenBadgePage: true
       }
     case 'CREDENTIALS_DEMO_COMPLETE':
       return {
         ...state,
         registerYourAppPage: false,
-        collectCredentialsPage: false,
+        requestCredentialsPage: false,
         logOutPage: true
+      }
+      case 'GET_OPENBADGE_COMPLETE':
+      return {
+        ...state,
+        getOpenBadgePage: false,
+        requestCredentialsPage: true
       }
     case 'LOGOUT':
       return {

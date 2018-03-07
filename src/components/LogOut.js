@@ -8,8 +8,8 @@ class LogOut extends Component {
   render () {
     return (
       <LogOutWrap>
-        <h4>Log out</h4>
-        <h6>Bedankt voor het proberen</h6>
+        <h4>Einde</h4>
+        <h6>Bedankt</h6>
       </LogOutWrap>
     )
   }

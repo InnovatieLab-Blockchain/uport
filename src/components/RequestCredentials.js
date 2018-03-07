@@ -29,7 +29,7 @@ const CredsLabel = styled.label`
 `
 
 const CredsButton = styled.button`
-  margin-top: 20px;
+  margin-top: 5px;
 `
 
 const NextButton = styled.button`

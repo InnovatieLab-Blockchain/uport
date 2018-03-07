@@ -33,7 +33,7 @@ class Welcome extends Component {
   render () {
     return (
       <WelcomeWrap>
-        <h4>DUO Demo LabJas</h4>
+        <h4>DUO Demo Blockchain</h4>
         <SubText>Identiteit en transactie infrastructuur voor Ethereum</SubText>
         <ConnectUport
           onClick={this.connectUport}>
