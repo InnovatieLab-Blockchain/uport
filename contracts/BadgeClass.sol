@@ -14,7 +14,12 @@ contract BadgeClass {
         _;
     }
 
-    function BadgeClass() public { 
+    function BadgeClass(string typeOB, string id1, string name1, address _issuer, address[] _alignment) public {
+        id = id1;
+        typeOb = typeOB;
+        name = name1;
+        issuer = _issuer;
+        alignment = _alignment;
         owner = msg.sender;  
         issuer = msg.sender;
     }
@@ -41,6 +46,11 @@ contract BadgeClass {
 
     function getAlignment() public constant returns(address[]) {
         return alignment;
+    }
+
+
+    function getAddress() public constant returns(address) {
+        return address(this);
     }
 
     function setProperties(string typeOB, string id1, string name1) public onlyOwner { 

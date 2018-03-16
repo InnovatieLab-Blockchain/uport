@@ -9,7 +9,7 @@ import BadgeClass from './BadgeClass'
 
 import { getBadge, getIssuer, getRecipient, getAssertionProperties } from '../utilities/getAssertion'
 
-import { getId, getType, getContext, getName, getBadgeIssuer, getAlignment } from '../utilities/getBadgeClass'
+import { getProperties } from '../utilities/getBadgeClass'
 
 import styled from 'styled-components'
 
@@ -34,25 +34,26 @@ class GetOpenBadge extends Component {
 
   constructor (props) {
     super(props)
-    this.getCurrentBadge = this.getCurrentBadge.bind(this)
+    this.getAssertion = this.getAssertion.bind(this)
+    this.getBadgeProperties = this.getBadgeProperties.bind(this)
   }
 
-  getCurrentBadge () {
+  getAssertion () {
     const actions = this.props.actions
     getBadge(actions)
     getRecipient(actions)
     getIssuer(actions)
     //getAssertionProperties(actions)
-    getId(actions)
-    getBadgeIssuer(actions)
-    getType(actions)
-    getContext(actions)
-    getName(actions)
-    getAlignment(actions)
   }
 
+ getBadgeProperties() {
+  const actions = this.props.actions
+  getProperties(actions)
+ }
+
   componentDidMount () {
-    this.getCurrentBadge()
+    this.getAssertion()
+    //this.getBadgeProperties()
     // // Populate existing badge
   }
 
@@ -70,12 +71,12 @@ class GetOpenBadge extends Component {
   renderBadgeClass() {
     return (
       <BadgeClass 
-        badgeId={this.props.badgeId} 
-        badgeIssuer={this.props.badgeIssuer}
-        badgeName={this.props.badgeName}
-        badgeType={this.props.badgeType} 
-        badgeContext={this.props.badgeContext}
-        badgeAlignment={this.props.badgeAlignment}
+        // badgeId={this.props.badgeId} 
+        // badgeIssuer={this.props.badgeIssuer}
+        // badgeName={this.props.badgeName}
+        // badgeType={this.props.badgeType} 
+        // badgeContext={this.props.badgeContext}
+        badgeProperties={this.props.badgeProperties}
       />
     );
   }
@@ -90,11 +91,12 @@ class GetOpenBadge extends Component {
           <CurrentOpenBadgeArea >
             {this.renderAssertion()}
           </CurrentOpenBadgeArea>
+          <SubText>Badge</SubText>
           <CurrentOpenBadgeArea >
             {this.renderBadgeClass()}
           </CurrentOpenBadgeArea>
         </OpenBadgeArea>
-
+        <NextButton onClick={this.getBadgeProperties}>Badge</NextButton>
               <NextButton
                 onClick={this.props.actions.getOpenBadgeComplete}>
                 Volgende
@@ -115,12 +117,12 @@ const mapStateToProps = (state, props) => {
     gettingRecipient: state.App.gettingRecipient,
     assertionProperties: state.App.assertionProperties,
     recipient: state.App.recipient,
-    badgeId: state.App.badgeId,
-    badgeType: state.App.badgeType,
-    badgeContext: state.App.badgeContext,
-    badgeName: state.App.badgeName,
-    badgeIssuer: state.App.badgeIssuer,
-    badgeAlgnment: state.App.badgeAlgnment,
+    // badgeId: state.App.badgeId,
+    // badgeType: state.App.badgeType,
+    // badgeContext: state.App.badgeContext,
+    // badgeName: state.App.badgeName,
+    // badgeIssuer: state.App.badgeIssuer,
+    badgeProperties: state.App.badgeProperties,
     error: state.App.error
   }
 }

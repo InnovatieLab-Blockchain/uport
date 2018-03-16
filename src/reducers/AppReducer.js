@@ -9,9 +9,10 @@ export default(state = initialState, payload) => {
       return {
         ...state,
         uport: payload.data,
-        signTransactionPage: false,
-        //getOpenBadgePage: true,
-        collectCredentialsPage: true,
+        //signTransactionPage: true,
+        getOpenBadgePage: true,
+        //revokeCredentialsPage: true,
+        collectCredentialsPage: false,
       }
     
       case 'GET_BADGE_REQUEST':
@@ -173,21 +174,21 @@ export default(state = initialState, payload) => {
         error: payload.data
       }  
 
-      case 'GET_BADGE_ALIGNMENT_REQUEST':
+      case 'GET_BADGE_PROPERTIES_REQUEST':
       return {
         ...state,
-        gettingBadgeAlignment: true
+        gettingBadgeProperties: true
       }
-    case 'GET_BADGE_ALIGNMENT_SUCCESS':
+    case 'GET_BADGE_PROPERTIES_SUCCESS':
       return {
         ...state,
-        gettingBadgeAlignment: false,
-        badgeAlignment: payload.data
+        gettingBadgeProperties: false,
+        badgeProperties: payload.data
       }
-    case 'GET_BADGE_ALIGNMENT_ERROR':
+    case 'GET_BADGE_PROPERTIES_ERROR':
       return {
         ...state,
-        gettingBadgeAlignment: false,
+        gettingBadgeProperties: false,
         error: payload.data
       }  
 
@@ -214,7 +215,7 @@ export default(state = initialState, payload) => {
       return {
         ...state,
         getOpenBadgePage: false,
-        requestCredentialsPage: true
+        collectCredentialsPage: true
       }
     case 'LOGOUT':
       return {

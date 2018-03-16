@@ -11,31 +11,37 @@ const CredsLabel = styled.label`
 `
 
 function BadgeClass(props) {
+  var badgeProperties
+  if(props.badgeProperties !== undefined) {
+    badgeProperties  = props.badgeProperties
+  } else {
+    badgeProperties = ["", "", "", "", "", ""]
+  }
     return (
             <CredsTable>
             <tbody>
               <tr>
                 <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>{props.badgeId}</CredsLabel>
+                  <CredsLabel>{badgeProperties[0]}</CredsLabel>
                 </td>
                 <td>
-                  <CredsLabel>{props.badgeIssuer}</CredsLabel>
+                  <CredsLabel>{badgeProperties[1]}</CredsLabel>
                 </td>
               </tr>
               <tr>
                 <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>{props.badgeType}</CredsLabel>
+                  <CredsLabel>{badgeProperties[2]}</CredsLabel>
                 </td>
                 <td>
-                  <CredsLabel>{props.badgeName}</CredsLabel>
+                  <CredsLabel>{badgeProperties[3]}</CredsLabel>
                 </td>
               </tr>
               <tr>
                 <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>{props.badgeContext}</CredsLabel>
+                  <CredsLabel>{badgeProperties[4]}</CredsLabel>
                 </td>
                 <td>
-                  <CredsLabel>{props.badgeAlignment}</CredsLabel>
+                  <CredsLabel>{badgeProperties[5]}</CredsLabel>
                 </td>
               </tr>
             </tbody>

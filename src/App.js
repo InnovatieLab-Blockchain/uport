@@ -13,8 +13,8 @@ import Welcome from './components/Welcome'
 import SignTransaction from './components/SignTransaction'
 import CollectCredentials from './components/CollectCredentials'
 import RequestCredentials from './components/RequestCredentials'
+import RevokeCredentials from './components/RevokeCredentials'
 import GetOpenBadge from './components/GetOpenBadge'
-import RegisterYourApp from './components/RegisterYourApp'
 import LogOut from './components/LogOut'
 
 const AppWrap = styled.div`
@@ -51,6 +51,12 @@ class App extends Component {
             !this.props.collectCredentialsPage
               ? <SignTransaction />
               : null
+          }          
+          {
+            this.props.revokeCredentialsPage === true &&
+            !this.props.collectCredentialsPage
+              ? <RevokeCredentials />
+              : null
           }
           {
             this.props.getOpenBadgePage &&
@@ -71,12 +77,6 @@ class App extends Component {
               : null
           }
           {
-            this.props.registerYourAppPage &&
-            !this.props.logOutPage
-              ? <RegisterYourApp />
-              : null
-          }
-          {
             this.props.logOutPage
               ? <LogOut />
               : null
@@ -93,7 +93,7 @@ const mapStateToProps = (state, props) => {
     signTransactionPage: state.App.signTransactionPage,
     collectCredentialsPage: state.App.collectCredentialsPage,
     requestCredentialsPage: state.App.requestCredentialsPage,
-    registerYourAppPage: state.App.registerYourAppPage,
+    revokeCredentialsPage: state.App.revokeCredentialsPage,    
     getOpenBadgePage: state.App.getOpenBadgePage,
     logOutPage: state.App.logOutPage
   }

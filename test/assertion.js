@@ -19,7 +19,7 @@ var Assertion = artifacts.require("./Assertion.sol");
 
 var account = "0x627306090abaB3A6e1400e9345bC60c78a8BEf57"
 var account2 = "0xf17f52151EbEF6C7334FAD080c5704D77216b732"
-var contractAddress = "0x8acee021a27779d8e98b9650722676b850b25e11"
+var contractAddress = "0xe4e47451aad6c89a6d9e4ad104a7b77ffe1d3b36"
 var id = "http://lod.duo.nl/bron/id/550e8400-e29b-41d4-a716-446655440000"
 var typeOB = "http://lod.duo.nl/cdm/def/v0/Oordeel"
 var name = "Assertion"
@@ -29,26 +29,26 @@ var badge = "0xcb1c7b794f20d3e8993e0076b79b2649413a2256"
 var assertion
 
 contract('Assertion', function(accounts) {
-  it("should get the Properties", function() {
-    return Assertion.at(contractAddress).then(function(instance) {
-      assertion = instance
-      return assertion.recipient.call({from: account});
-    }).then(function(name) {
-      console.log(name)
-      assert.equal(name, recipient, "naam klopt niet");
-      return assertion.issuer.call({from: account});
-    }).then(function(name) {
-      console.log(name)
-      assert.equal(name, issuer, "naam klopt niet");
-      return assertion.badge.call({from: account});
-    }).then(function(name) {
-      console.log(name)
-      assert.equal(name, badge, "naam klopt niet");
-      return assertion.issuedOn.call({from: account});
-    }).then(function(name) {
-      console.log(name)
-    })
-  });
+  // it("should get the Properties", function() {
+  //   return Assertion.at(contractAddress).then(function(instance) {
+  //     assertion = instance
+  //     return assertion.recipient.call({from: account});
+  //   }).then(function(name) {
+  //     console.log(name)
+  //     assert.equal(name, recipient, "naam klopt niet");
+  //     return assertion.issuer.call({from: account});
+  //   }).then(function(name) {
+  //     console.log(name)
+  //     assert.equal(name, issuer, "naam klopt niet");
+  //     return assertion.badge.call({from: account});
+  //   }).then(function(name) {
+  //     console.log(name)
+  //     assert.equal(name, badge, "naam klopt niet");
+  //     return assertion.issuedOn.call({from: account});
+  //   }).then(function(name) {
+  //     console.log(name)
+  //   })
+  // });
   it("should get all properties", function() {
     return Assertion.at(contractAddress).then(function(instance) {
       return instance.getProperties.call({from: account});

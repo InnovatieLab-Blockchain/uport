@@ -1,14 +1,15 @@
 // Frameworks
 import React, { Component } from 'react'
-
+import { Connect, SimpleSigner } from 'uport-connect'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as AppActions from '../actions/AppActions'
 
-import SharesContract from '../utilities/SharesContract'
+import Assertion from './Assertion'
+import AssertionContract from '../utilities/AssertionContract'
 import waitForMined from '../utilities/waitForMined'
 import checkAddressMNID from '../utilities/checkAddressMNID'
-import getShares from '../utilities/getShares'
+import { getBadge, getIssuer, getRecipient, getAssertionProperties } from '../utilities/getAssertion'
 
 import styled from 'styled-components'
 
@@ -32,41 +33,71 @@ const NextButton = styled.button`
 `
 const SubText = styled.p`
   margin: 0 auto 3em auto;
-  font-size: 18px;
+  fontSize: 18px;
 `
 
 class SignTransaction extends Component {
 
   constructor (props) {
     super(props)
-    this.getCurrentShares = this.getCurrentShares.bind(this)
+    this.getCurrentBadge = this.getCurrentBadge.bind(this)
     this.buyShares = this.buyShares.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   }
+  
 
-  getCurrentShares () {
-    // TODO: Dump this check once MNID is default behavior
-    const addr = checkAddressMNID(this.props.uport.address)
-    const actions = this.props.actions
-    getShares(addr, actions)
-  }
+getCurrentBadge () {
+  const actions = this.props.actions
+  getBadge(actions)
+  getRecipient(actions)
+  getIssuer(actions)
+}
+
+renderAssertion() {
+  return (
+    <Assertion 
+      badge={this.props.badge} 
+      issuer={this.props.issuer}
+      recipient={this.props.recipient}
+      //assertionProperties={this.props.assertionProperties}
+    />
+  );
+}
 
   buyShares (e) {
     e.preventDefault()
 
-    console.log('buyShares')
+    console.log('buyshares')
 
-    let sharesNumber = this.props.sharesInput
     const addr = checkAddressMNID(this.props.uport.address)
     const actions = this.props.actions
 
-    console.log({sharesNumber, addr, actions})
+    console.log({addr})
 
-    this.props.actions.buySharesREQUEST(sharesNumber)
+    // const txobject = {
+    //   to: '0xaa588d3737b611bafd7bd713445b314bd453a5c8',
+    //   value: '0.1',
+    //   function: setIssuer(),
+    //   appName: 'DUO'
+    // }
 
-    SharesContract.updateShares(sharesNumber, (error, txHash) => {
-      console.log('updateShares')
+    // const connect = new Connect('DUO', {
+    //   clientId: '2oynp4geSgBwqkQebaYtexB32rCNbPmLu5K',
+    //   network: 'rinkeby',
+    //   signer: SimpleSigner('69c9446852693c00bd0a8825fad8297e4f9db34c9562a660585a0e767f993bd7')
+    // })
+
+    // const txRequest = AssertionContract.setIssuer({from: addr});
+    // connect.sendTransaction(txRequest).then(txID => {
+    //   console.log(txID)
+    // })
+
+
+
+    AssertionContract.setIssuer({from: addr}, (error, txHash) => {
+      console.log('setIssuer')
       if (error) { this.props.actions.buySharesERROR(error) }
+      console.log(txHash)
       waitForMined(addr, txHash, { blockNumber: null }, actions,
         () => {
           this.props.actions.buySharesPENDING()
@@ -85,20 +116,18 @@ class SignTransaction extends Component {
 
   componentDidMount () {
     // Populate existing shares
-    this.getCurrentShares()
+    this.getCurrentBadge()
   }
 
   render () {
     return (
       <SharesWrap>
         <h4>Sign a transaction</h4>
-        <SubText>Buy Shares</SubText>
+        <SubText>Set Issuer</SubText>
 
         <SharesArea>
           <CurrentSharesArea >
-            <span>Your current shares: </span>
-            <br />
-            <CurrentSharesNumber>{this.props.sharesTotal}</CurrentSharesNumber>
+          {this.renderAssertion()}
           </CurrentSharesArea>
 
           {
@@ -117,19 +146,12 @@ class SignTransaction extends Component {
               : (
                 <FormBuyshares>
                   <FormRow>
-                    <label>Shares to Buy: </label>
-                    <input
-                      id='sharesInput'
-                      type='number'
-                      style={{"paddingLeft":".5em", "font-size":"16px"}}
-                      onChange={this.handleInputChange}
-                      value={this.props.sharesInput} />
                   </FormRow>
                   <FormRow>
                     <br />
                     <BtnBuyShares
                       onClick={this.buyShares}>
-                      Buy Shares
+                      Set Issuer
                     </BtnBuyShares>
                   </FormRow>
                   <FormRow>
@@ -164,7 +186,12 @@ const mapStateToProps = (state, props) => {
   return {
     uport: state.App.uport,
     sharesInput: state.App.sharesInput,
-    gettingShares: state.App.gettingShares,
+    gettingBadge: state.App.gettingBadge,
+    badge: state.App.badge,
+    gettingIssuer: state.App.gettingIssuer,
+    issuer: state.App.issuer,
+    gettingRecipient: state.App.gettingRecipient,
+    recipient: state.App.recipient,
     confirmingInProgress: state.App.confirmingInProgress,
     sharesTotal: state.App.sharesTotal,
     buyingInProgress: state.App.buyingInProgress,

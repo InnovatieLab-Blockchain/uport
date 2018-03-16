@@ -182,20 +182,20 @@ export const getBadgeIssuerERROR = (data) => {
 }
 
 
-export const getBadgeAlignmentREQUEST = () => {
+export const getBadgePropertiesREQUEST = () => {
   return {
-    type: 'GET_BADGE_ALIGNMENT_REQUEST'
+    type: 'GET_BADGE_PROPERTIES_REQUEST'
   }
 }
-export const getBadgeAlignmentSUCCESS = (data) => {
+export const getBadgePropertiesSUCCESS = (data) => {
   return {
-    type: 'GET_BADGE_ALIGNMENT_SUCCESS',
+    type: 'GET_BADGE_PROPERTIES_SUCCESS',
     data
   }
 }
-export const getBadgeAlignmentERROR = (data) => {
+export const getBadgePropertiesERROR = (data) => {
   return {
-    type: 'GET_BADGE_ALIGNMENT_ERROR',
+    type: 'GET_BADGE_PROPERTIES_ERROR',
     data
   }
 }

@@ -3,10 +3,11 @@ const Web3 = require('web3')
 const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
 // const Web3 = require('web3')
 const abi = require('../../build/contracts/BadgeClass.json').abi
+const contractAddress = '0x2e335f247e91caa168c64b63104c4475b2af3942'
 
 function BadgeClassContractSetup () {
   let BadgeClassABI = web3.eth.contract(abi)
-  let BadgeClassContractObj = BadgeClassABI.at('0x8f0483125fcb9aaaefa9209d8e9d7b9c8b9fb90f')
+  let BadgeClassContractObj = BadgeClassABI.at(contractAddress)
   return BadgeClassContractObj
 }
 

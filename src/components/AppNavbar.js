@@ -59,7 +59,7 @@ class AppNavbar extends Component {
       <NavBar>
         
         <LeftArea>
-          <LogoLink href='/'>DUO</LogoLink>
+          <LogoLink href='/'>InnovatieLab</LogoLink>
           <span> | </span>
           <DemoText>Demo</DemoText>
         </LeftArea>

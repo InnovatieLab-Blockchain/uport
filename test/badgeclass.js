@@ -23,52 +23,49 @@ var BadgeClass = artifacts.require("./BadgeClass.sol");
 // },
 
 var account = "0x627306090abaB3A6e1400e9345bC60c78a8BEf57"
-var contractAddress = "0xb529f14aa8096f943177c09ca294ad66d2e08b1f"
-var id = "http://lod.duo.nl/rio/id/onderwijslicentie/04EU25078"
+var contractAddress = "0x2e335f247e91caa168c64b63104c4475b2af3942"
+
 var typeOB = "http://lod.duo.nl/cdm/def/v0/MBOonderwijslicentie"
+var id = "http://lod.duo.nl/rio/id/onderwijslicentie/04EU25078"
 var name = "Dakdekken niveau 2 op Deltion, Zwolle"
 var issuer = "0x30753e4a8aad7f8597332e813735def5dd395028"
 var alignment = ["0xb1bc3a819dca04313c5f6dddd02bac83ec48d88c", "0x6abdb719276ce5784cab438f0c3a3b55c56d5771"]
 var badgeClass
 
 contract('BadgeClass', function(accounts) {
-  it("should set and get the Properties", function() {
+  // it("should set and get the Properties", function() {
+  //   return BadgeClass.at(contractAddress).then(function(instance) {
+  //     badgeClass = instance
+  //     return badgeClass.setProperties(typeOB, id, name, {from: account});
+  //   }).then(function() {
+  //     // If this callback is called, the transaction was successfully processed.
+  //     console.log("setProperties successful!")
+  //     return badgeClass.getName.call({from: account});
+  //   }).then(function(name) {
+  //     console.log(name)
+  //     assert.equal(name, "Dakdekken niveau 2 op Deltion, Zwolle", "naam klopt niet");
+  //   }).catch(function(e) {
+  //     console.log(e)
+  //   })
+  // });
+  // it("should set and get the Issuer", function() {
+  //   return BadgeClass.at(contractAddress).then(function(instance) {
+  //     badgeClass = instance
+  //     return badgeClass.setIssuer(issuer, {from: account});
+  //   }).then(function() {
+  //     // If this callback is called, the transaction was successfully processed.
+  //     console.log("setIssuer successful!")
+  //     return badgeClass.getIssuer.call({from: account});
+  //   }).then(function(name) {
+  //     console.log(name)
+  //     assert.equal(name, issuer, "adres klopt niet");
+  //   }).catch(function(e) {
+  //     console.log(e)
+  //   })
+  // });
+  it("should get the AlignmentObjects", function() {
     return BadgeClass.at(contractAddress).then(function(instance) {
       badgeClass = instance
-      return badgeClass.setProperties(typeOB, id, name, {from: account});
-    }).then(function() {
-      // If this callback is called, the transaction was successfully processed.
-      console.log("setProperties successful!")
-      return badgeClass.getName.call({from: account});
-    }).then(function(name) {
-      console.log(name)
-      assert.equal(name, "Dakdekken niveau 2 op Deltion, Zwolle", "naam klopt niet");
-    }).catch(function(e) {
-      console.log(e)
-    })
-  });
-  it("should set and get the Issuer", function() {
-    return BadgeClass.at(contractAddress).then(function(instance) {
-      badgeClass = instance
-      return badgeClass.setIssuer(issuer, {from: account});
-    }).then(function() {
-      // If this callback is called, the transaction was successfully processed.
-      console.log("setIssuer successful!")
-      return badgeClass.getIssuer.call({from: account});
-    }).then(function(name) {
-      console.log(name)
-      assert.equal(name, issuer, "adres klopt niet");
-    }).catch(function(e) {
-      console.log(e)
-    })
-  });
-  it("should set and get the AlignmentObjects", function() {
-    return BadgeClass.at(contractAddress).then(function(instance) {
-      badgeClass = instance
-      return badgeClass.setAlignment(alignment, {from: account});
-    }).then(function() {
-      // If this callback is called, the transaction was successfully processed.
-      console.log("setAlignment successful!")
       return badgeClass.getAlignment.call({from: account});
     }).then(function(name) {
       console.log(name)
@@ -80,6 +77,7 @@ contract('BadgeClass', function(accounts) {
   it("should get all properties", function() {
     return BadgeClass.at(contractAddress).then(function(instance) {
       badgeClass = instance
+      console.log("BadgeClass address: ", badgeClass.address)
       return badgeClass.getProperties.call({from: account});
     }).then(function(props) {
       console.log(props)

@@ -26,28 +26,28 @@ contract Assertion {
         name = name1;
     }
 
-    function Assertion(string typeOb1, string id1, string name1, address issuer1, address badge1, address recipient1) public {
-        setProfile(typeOb1, id1, name1);
+    function Assertion(string _typeOb, string id1, string name1, address issuer1, address badge1, address recipient1) public {
+        setProfile(_typeOb, id1, name1);
         issuedOn = now;
         issuer = issuer1;
         badge = badge1;
         recipient = recipient1;
     }
 
-    function setRecipient(address recipient1) public onlyOwner {
-        recipient = recipient1;
+    function setRecipient(address _recipient) public {
+        recipient = _recipient;
     }
 
-    function setIssuer(address issuer1) public onlyOwner {
-        issuer = issuer1;
+    function setIssuer() public {
+        issuer = msg.sender;
     }
 
-    function setBadge(address badge1) public onlyOwner {
-        badge = badge1;
+    function setBadge(address _badge) public {
+        badge = _badge;
     }
     
-    function setVerificationType(string verificationType1) public onlyOwner {
-        verificationType = verificationType1;
+    function setVerificationType(string _verificationType) public {
+        verificationType = _verificationType;
     }
 
     function getProperties() public view returns(string,string,string,string,address,address,address,address,uint) {

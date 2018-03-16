@@ -9,7 +9,7 @@ var contractAddress = "0xbd2c938b9f6bfc1a66368d08cb44dc3eb2ae27be"
 
 contract('Issuer', function(accounts) {
   it("should get the type", function() {
-    return Issuer.at(contractAddress).then(function(instance) {
+    return Issuer.deployed().then(function(instance) {
       return instance.typeOb.call({from: account});
     }).then(function(name) {
       console.log(name)
@@ -17,7 +17,7 @@ contract('Issuer', function(accounts) {
     });
   });
   it("should get the id", function() {
-    return Issuer.at(contractAddress).then(function(instance) {
+    return Issuer.deployed().then(function(instance) {
       return instance.id.call({from: account});
     }).then(function(name) {
       console.log(name)
@@ -25,7 +25,7 @@ contract('Issuer', function(accounts) {
     });
   });
   it("should get the name", function() {
-    return Issuer.at(contractAddress).then(function(instance) {
+    return Issuer.deployed().then(function(instance) {
       return instance.name.call({from: account});
     }).then(function(name) {
       console.log(name)
@@ -33,7 +33,7 @@ contract('Issuer', function(accounts) {
     });
   });
   it("should get the context", function() {
-    return Issuer.at(contractAddress).then(function(instance) {
+    return Issuer.deployed().then(function(instance) {
       return instance.context.call({from: account});
     }).then(function(name) {
       console.log(name)
@@ -41,7 +41,7 @@ contract('Issuer', function(accounts) {
     });
   });
   it("should get all properties", function() {
-    return Issuer.at(contractAddress).then(function(instance) {
+    return Issuer.deployed().then(function(instance) {
       return instance.getProperties.call({from: account});
     }).then(function(name) {
       console.log(name)

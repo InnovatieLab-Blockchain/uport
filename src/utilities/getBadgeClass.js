@@ -65,15 +65,16 @@ export async function getBadgeIssuer(actions) {
     })
 }
 
-export async function getAlignment(actions) {
-  actions.getBadgeAlignmentREQUEST()
-  BadgeClassContract.getAlignment
-    .call((error, alignment) => {
+export async function getProperties(actions) {
+  actions.getBadgePropertiesREQUEST()
+  BadgeClassContract.getProperties
+    .call((error, props) => {
       if (error) {
-        actions.getBadgeAlignmentERROR(error)
+        actions.getBadgePropertiesERROR(error)
         throw error
       }
-      actions.getBadgeAlignmentSUCCESS(alignment)
-      return alignment
+      actions.getBadgePropertiesSUCCESS(props)
+      console.log("Props: ", props)
+      return props
     })
 }

@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as AppActions from '../actions/AppActions'
 import styled from 'styled-components'
-import { uport } from '../utilities/uportSetup'
+import { uport, innovatielab, uport2, attester2, attester3} from '../utilities/uportSetup'
+import checkAddressMNID from '../utilities/checkAddressMNID'
 
 const WelcomeWrap = styled.section``
 const ConnectUport = styled.button``
@@ -21,11 +22,12 @@ class Welcome extends Component {
   }
 
   connectUport () {
-    uport.requestCredentials(
+    attester3.requestCredentials(
       { requested: ['name', 'phone', 'country', 'avatar'],
         notifications: true }
     ).then((credentials) => {
         console.log({credentials})
+        // console.log('Decoded uport address:', checkAddressMNID(credentials.address))
         this.props.actions.connectUport(credentials)
     })
   }
@@ -33,8 +35,8 @@ class Welcome extends Component {
   render () {
     return (
       <WelcomeWrap>
-        <h4>DUO Demo Blockchain</h4>
-        <SubText>Identiteit en transactie infrastructuur voor Ethereum</SubText>
+        <h4>InnovatieLab Demo Blockchain</h4>
+        <SubText>Identiteit en transactie infrastructuur voor Ethereum Blockchain</SubText>
         <ConnectUport
           onClick={this.connectUport}>
           Verbind via uPort

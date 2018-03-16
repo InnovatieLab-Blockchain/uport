@@ -48,10 +48,23 @@ class CollectCredentials extends Component {
     this.credentialsbtnClickC = this.credentialsbtnClickC.bind(this)
   }
 
+  getBadge() {
+    var badge = this.props.badgeProperties
+    var badge1 =  {
+      "Badge" : {
+          "naam":badge[0],
+          "issuer":badge[1],
+      }
+   }
+    return badge1;
+  }
+
+  
   credentialsbtnClickA () {
+    var badge = this.props.badgeProperties
     attester1.attestCredentials({
       sub: this.props.uport.address,
-      claim: {OpenBadge1: {naam: 'OpenBadge1', description: 'Dit is OpenBadge 1' }},
+      claim: this.getBadge(),
       exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
       uriHandler: (log) => { console.log(log) }
     })
@@ -116,7 +129,8 @@ class CollectCredentials extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    uport: state.App.uport
+    uport: state.App.uport,
+    badgeProperties: state.App.badgeProperties,
   }
 }
 
