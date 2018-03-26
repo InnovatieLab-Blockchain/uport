@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as AppActions from '../actions/AppActions'
 import styled from 'styled-components'
-import { uport, innovatielab, uport2, attester2, attester3} from '../utilities/uportSetup'
+import { uport, lab_connector, uport2, attester2, attester3} from '../utilities/uportSetup'
 import checkAddressMNID from '../utilities/checkAddressMNID'
 
 const WelcomeWrap = styled.section``
@@ -22,7 +22,7 @@ class Welcome extends Component {
   }
 
   connectUport () {
-    attester3.requestCredentials(
+    lab_connector.requestCredentials(
       { requested: ['name', 'phone', 'country', 'avatar'],
         notifications: true }
     ).then((credentials) => {

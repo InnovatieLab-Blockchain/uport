@@ -50,13 +50,15 @@ class CollectCredentials extends Component {
 
   getBadge() {
     var badge = this.props.badgeProperties
-    var badge1 =  {
-      "Badge" : {
-          "naam":badge[0],
-          "issuer":badge[1],
-      }
-   }
-    return badge1;
+    const js = {
+      "Naam":badge[3],
+      "Badge ID":badge[0],
+      "Badge Type":badge[1],
+  }
+        var jsonData = {};
+        jsonData[badge[3]] = js
+
+    return jsonData;
   }
 
   
@@ -121,7 +123,6 @@ class CollectCredentials extends Component {
           </CredsTable>
           <NextButton onClick={this.props.actions.credentialsCollectComplete}>Volgende</NextButton>
         </CredentialsArea>
-        <SubText>Credentials duren even voordat ze in de uPort smartphone App verschijnen.</SubText>
       </CredentialsWrap>
     )
   }

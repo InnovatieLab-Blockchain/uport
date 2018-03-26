@@ -1,5 +1,6 @@
 pragma solidity ^0.4.18;
 
+
 contract BadgeClass {
     address owner;
     string private id;
@@ -48,7 +49,6 @@ contract BadgeClass {
         return alignment;
     }
 
-
     function getAddress() public constant returns(address) {
         return address(this);
     }
@@ -59,8 +59,8 @@ contract BadgeClass {
         name = name1;
     }
 
-    function getProperties() public view returns(string,string,string,string,address,address[]) {
-        return(id,typeOb,context,name,issuer,alignment);
+    function getProperties() public view returns(string, string, string, string, address, address[]) {
+        return(id, typeOb, context, name, issuer, alignment);
     }
 
     function setIssuer(address issuer1) public onlyOwner { 

@@ -58,8 +58,12 @@ const uport2 = new Connect('InnovatieLab', {
   signer: SimpleSigner(key('InnovatieLab'))
 })
 
-
+const lab_connector = new Connect('Innovatielab Blockchain', {
+  clientId: '2osVEge5GkpT3tJWdzr2TpfwdjsEo27MEoc',
+  network: 'rinkeby',
+  signer: SimpleSigner('497369198844fe973c9cadc8bdc5b0634fe01cd3ffe69944884cb6506c7f7be4')
+});
 
 
 const web3 = uport.getWeb3()
-export { web3, uport, verifier1, verifier2, verifier3, attester1, attester2, attester3, innovatielab, uport2 }
+export { web3, uport, verifier1, verifier2, verifier3, attester1, attester2, attester3, innovatielab, uport2, lab_connector }

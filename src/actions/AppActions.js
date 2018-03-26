@@ -50,6 +50,25 @@ export const getRecipientERROR = (data) => {
   }
 }
 
+export const getScoreREQUEST = () => {
+  return {
+    type: 'GET_SCORE_REQUEST'
+  }
+}
+export const getScoreSUCCESS = (data) => {
+  return {
+    type: 'GET_SCORE_SUCCESS',
+    data
+  }
+}
+export const getScoreERROR = (data) => {
+  return {
+    type: 'GET_SCORE_ERROR',
+    data
+  }
+}
+
+
 export const getAssertionPropertiesREQUEST = () => {
   return {
     type: 'GET_ASSERTION_PROPERTIES_REQUEST'
@@ -90,96 +109,6 @@ export const getIssuerERROR = (data) => {
 // //////////////////////////////////////////////
 // Get BadgeClass props
 // //////////////////////////////////////////////
-
-export const getBadgeIdREQUEST = () => {
-  return {
-    type: 'GET_BADGE_ID_REQUEST'
-  }
-}
-export const getBadgeIdSUCCESS = (data) => {
-  return {
-    type: 'GET_BADGE_ID_SUCCESS',
-    data
-  }
-}
-export const getBadgeIdERROR = (data) => {
-  return {
-    type: 'GET_BADGE_ID_ERROR',
-    data
-  }
-}
-
-export const getBadgeTypeREQUEST = () => {
-  return {
-    type: 'GET_BADGE_TYPE_REQUEST'
-  }
-}
-export const getBadgeTypeSUCCESS = (data) => {
-  return {
-    type: 'GET_BADGE_TYPE_SUCCESS',
-    data
-  }
-}
-export const getBadgeTypeERROR = (data) => {
-  return {
-    type: 'GET_BADGE_TYPE_ERROR',
-    data
-  }
-}
-
-export const getBadgeContextREQUEST = () => {
-  return {
-    type: 'GET_BADGE_CONTEXT_REQUEST'
-  }
-}
-export const getBadgeContextSUCCESS = (data) => {
-  return {
-    type: 'GET_BADGE_CONTEXT_SUCCESS',
-    data
-  }
-}
-export const getBadgeContextERROR = (data) => {
-  return {
-    type: 'GET_BADGE_CONTEXT_ERROR',
-    data
-  }
-}
-
-export const getBadgeNameREQUEST = () => {
-  return {
-    type: 'GET_BADGE_NAME_REQUEST'
-  }
-}
-export const getBadgeNameSUCCESS = (data) => {
-  return {
-    type: 'GET_BADGE_NAME_SUCCESS',
-    data
-  }
-}
-export const getBadgeNameERROR = (data) => {
-  return {
-    type: 'GET_BADGE_NAME_ERROR',
-    data
-  }
-}
-
-export const getBadgeIssuerREQUEST = () => {
-  return {
-    type: 'GET_BADGE_ISSUER_REQUEST'
-  }
-}
-export const getBadgeIssuerSUCCESS = (data) => {
-  return {
-    type: 'GET_BADGE_ISSUER_SUCCESS',
-    data
-  }
-}
-export const getBadgeIssuerERROR = (data) => {
-  return {
-    type: 'GET_BADGE_ISSUER_ERROR',
-    data
-  }
-}
 
 
 export const getBadgePropertiesREQUEST = () => {
@@ -230,31 +159,30 @@ export const updatesharesInput = (data) => {
 }
 
 // //////////////////////////////////////////////
-// Buy Shares
+// Set Score
 // //////////////////////////////////////////////
 
-export const buySharesREQUEST = (tx, amount) => {
+export const storeScoreREQUEST = () => {
   return {
-    type: 'BUY_SHARES_REQUEST',
-    amount: amount,
-    buyingInProgress: true
+    type: 'STORE_SCORE_REQUEST',
+    storeScoreInProgress: true
   }
 }
-export const buySharesPENDING = () => {
+export const storeScorePENDING = () => {
   return {
-    type: 'BUY_SHARES_PENDING'
+    type: 'STORE_SCORE_PENDING'
   }
 }
-export const buySharesSUCCESS = (tx, data) => {
+export const storeScoreSUCCESS = (tx, data) => {
   return {
-    type: 'BUY_SHARES_SUCCESS',
+    type: 'STORE_SCORE_SUCCESS',
     tx: tx,
     data
   }
 }
-export const buySharesERROR = (data) => {
+export const storeScoreERROR = (data) => {
   return {
-    type: 'BUY_SHARES_ERROR',
+    type: 'STORE_SCORE_ERROR',
     data
   }
 }
@@ -270,12 +198,12 @@ export const getOpenBadgeComplete = (data) => {
 }
 
 // //////////////////////////////////////////////
-// Complete Buy Shares Demo
+// Complete Set Score  Demo
 // //////////////////////////////////////////////
 
-export const buySharesDemoComplete = (data) => {
+export const storeScoreDemoComplete = (data) => {
   return {
-    type: 'BUY_SHARES_DEMO_COMPLETE'
+    type: 'STORE_SCORE_DEMO_COMPLETE'
   }
 }
 

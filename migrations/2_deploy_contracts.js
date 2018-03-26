@@ -12,10 +12,6 @@ var BSNOracle = artifacts.require("./BSNOracle.sol");
 var Quiz = artifacts.require("./Quiz.sol");
 
 module.exports = function(deployer, network, accounts) {
-  // deployer.deploy(Alignment1, "Dakdekken","http://lod.duo.nl/rio/id/opleidingseenheid/22004", "CREBO", "22004");
-  // var alignment1 = Alignment1.address;
-  // deployer.deploy(Alignment2, "Dakdekker","http://data.europa.eu/esco/isco/C7121","ESCO", "7121");
-
 
   var alignment1, alignment2, issuer, recipient
 
@@ -47,8 +43,6 @@ deployer.deploy(BadgeClass, typeOB, id, name, issuer, align).then(function(){
     BadgeClass.address,
     recipient)
 });
-  // deployer.deploy(Issuer, "http://lod.duo.nl/cdm/def/v0/ErkendeOnderwijsinstelling","http://lod.duo.nl/rio/id/erkendeonderwijsinstelling/25PN","Thorbecke Scholengemeenschap");
-  // deployer.deploy(Recipient, "marc.minnee@gmail.com", "blockchain id", "Marc Minnee");
 
 
   deployer.deploy(OpenBadges);
@@ -57,7 +51,6 @@ deployer.deploy(BadgeClass, typeOB, id, name, issuer, align).then(function(){
 };
 
 // Rinkeby addresses:
-
 
 // Alignment: 0xf3042e4c41ac33fa28b97c1622555ec72e01ebb8
 // Alignment: 0xf332d17d37833561feaa7a09f3a8710da9007bfa

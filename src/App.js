@@ -16,6 +16,7 @@ import RequestCredentials from './components/RequestCredentials'
 import RevokeCredentials from './components/RevokeCredentials'
 import GetOpenBadge from './components/GetOpenBadge'
 import LogOut from './components/LogOut'
+import StoreScore from './components/StoreScore'
 
 const AppWrap = styled.div`
   display: flex;
@@ -46,6 +47,12 @@ class App extends Component {
               ? <Welcome />
               : null
           }
+          {
+            this.props.storeScorePage === true &&
+            !this.props.collectCredentialsPage
+              ? <StoreScore />
+              : null
+          }     
           {
             this.props.signTransactionPage === true &&
             !this.props.collectCredentialsPage
@@ -95,6 +102,7 @@ const mapStateToProps = (state, props) => {
     requestCredentialsPage: state.App.requestCredentialsPage,
     revokeCredentialsPage: state.App.revokeCredentialsPage,    
     getOpenBadgePage: state.App.getOpenBadgePage,
+    storeScorePage: state.App.storeScorePage,
     logOutPage: state.App.logOutPage
   }
 }

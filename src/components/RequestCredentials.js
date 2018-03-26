@@ -60,6 +60,12 @@ class RequestCredentials extends Component {
     };
   }
 
+  getBadgeName() {
+    var badge = this.props.badgeProperties
+    return badge[3];
+  }
+
+
   renderOpenBadge() {
     return (
       <OpenBadge
@@ -70,7 +76,7 @@ class RequestCredentials extends Component {
 
   credentialsbtnClick1 () {
     verifier1.requestCredentials(
-      { verified: ['OpenBadge1'],
+      { verified: [this.getBadgeName()],
         notifications: true }
     ).then((profile) => {
         console.log(profile)
@@ -125,7 +131,7 @@ class RequestCredentials extends Component {
                   <CredsLabel>OpenBadge1</CredsLabel>
                 </td>
                 <td>
-                  <CredsButton onClick={this.credentialsbtnClick1}>Deel met {verifier1.name}</CredsButton>
+                  <CredsButton onClick={this.credentialsbtnClick1}>Deel met {verifier1.appName}</CredsButton>
                 </td>
               </tr> 
             </tbody>
@@ -137,7 +143,7 @@ class RequestCredentials extends Component {
               <CredsLabel>OpenBadge2</CredsLabel>
             </td>
             <td>
-              <CredsButton onClick={this.credentialsbtnClick2}>Deel met {verifier2.name}</CredsButton>
+              <CredsButton onClick={this.credentialsbtnClick2}>Deel met {verifier2.appName}</CredsButton>
             </td>
           </tr> 
         </tbody>
@@ -149,7 +155,7 @@ class RequestCredentials extends Component {
               <CredsLabel>Verblijfsvergunning</CredsLabel>
             </td>
             <td>
-              <CredsButton onClick={this.credentialsbtnClick3}>Deel met {verifier3.name}</CredsButton>
+              <CredsButton onClick={this.credentialsbtnClick3}>Deel met {verifier3.appName}</CredsButton>
             </td>
           </tr> 
         </tbody>
@@ -165,7 +171,8 @@ class RequestCredentials extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    uport: state.App.uport
+    uport: state.App.uport,
+    badgeProperties: state.App.badgeProperties
   }
 }
 

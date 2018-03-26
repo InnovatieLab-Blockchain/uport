@@ -1,8 +1,5 @@
 import AssertionContract from './AssertionContract'
 
-
-console.log(AssertionContract )
-
 export async function getBadge(actions) {
   actions.getBadgeREQUEST()
   AssertionContract.badge

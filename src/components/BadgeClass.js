@@ -21,27 +21,27 @@ function BadgeClass(props) {
             <CredsTable>
             <tbody>
               <tr>
-                <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>{badgeProperties[0]}</CredsLabel>
-                </td>
-                <td>
-                  <CredsLabel>{badgeProperties[1]}</CredsLabel>
-                </td>
-              </tr>
-              <tr>
-                <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>{badgeProperties[2]}</CredsLabel>
+                <td style={{"paddingRight":"4em"}}>
+                  <CredsLabel>Naam</CredsLabel>
                 </td>
                 <td>
                   <CredsLabel>{badgeProperties[3]}</CredsLabel>
                 </td>
               </tr>
               <tr>
-                <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>{badgeProperties[4]}</CredsLabel>
+                <td style={{"paddingRight":"4em"}}>
+                  <CredsLabel>Badge ID</CredsLabel>
                 </td>
                 <td>
-                  <CredsLabel>{badgeProperties[5]}</CredsLabel>
+                  <CredsLabel>{badgeProperties[0]}</CredsLabel>
+                </td>
+              </tr>
+              <tr>
+                <td style={{"paddingRight":"4em"}}>
+                  <CredsLabel>Badge Type</CredsLabel>
+                </td>
+                <td>
+                  <CredsLabel>{badgeProperties[1]}</CredsLabel>
                 </td>
               </tr>
             </tbody>

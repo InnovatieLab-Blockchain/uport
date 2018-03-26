@@ -1,8 +1,5 @@
 import { web3 } from './uportSetup'
 
-import checkAddressMNID from './checkAddressMNID'
-// import getShares from './getShares'
-
 const pollingLoop = (address, txHash, response, actions, pendingCB, successCB) => {
   setTimeout(function () {
     web3.eth.getTransaction(txHash, (error, response) => {
@@ -17,8 +14,6 @@ const pollingLoop = (address, txHash, response, actions, pendingCB, successCB) =
 
 async function waitForMined (address, txHash, response, actions, pendingCB, successCB) {
   if (response.blockNumber) {
-    const addr = checkAddressMNID(address)
-    //getShares(addr, actions)
     successCB()
   } else {
     pendingCB()

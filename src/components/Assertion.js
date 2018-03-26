@@ -19,36 +19,31 @@ function Assertion(props) {
             <CredsTable>
             <tbody>
               <tr>
-                <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>Badge</CredsLabel>
+                <td style={{"paddingRight":"4em"}}>
+                  <CredsLabel>Badge adres</CredsLabel>
                 </td>
                 <td>
                   <CredsLabel>{props.badge}</CredsLabel>
                 </td>
               </tr>
               <tr>
-                <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>Ontvanger</CredsLabel>
+                <td style={{"paddingRight":"4em"}}>
+                  <CredsLabel>Ontvanger adres</CredsLabel>
                 </td>
                 <td>
                   <CredsLabel>{props.recipient}</CredsLabel>
                 </td>
               </tr>
               <tr>
-                <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>Issuer</CredsLabel>
+                <td style={{"paddingRight":"4em"}}>
+                  <CredsLabel>Uitgever adres</CredsLabel>
                 </td>
                 <td>
                   <CredsLabel>{props.issuer}</CredsLabel>
                 </td>
               </tr>
               <tr>
-                <td style={{"paddingRight":"8em"}}>
-                  <CredsLabel>Properties</CredsLabel>
-                </td>
-                <td>
-                  {/* {props.assertionProperties} */}
-                </td>
+
               </tr>
             </tbody>
           </CredsTable>

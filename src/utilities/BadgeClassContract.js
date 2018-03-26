@@ -1,9 +1,9 @@
-//import { web3 } from './uportSetup'
-const Web3 = require('web3')
-const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+import { web3 } from './uportSetup'
+// const Web3 = require('web3')
+// const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
 // const Web3 = require('web3')
 const abi = require('../../build/contracts/BadgeClass.json').abi
-const contractAddress = '0x2e335f247e91caa168c64b63104c4475b2af3942'
+const contractAddress = '0xa112d276f59d499bf5800722d57587b1f7849352'
 
 function BadgeClassContractSetup () {
   let BadgeClassABI = web3.eth.contract(abi)

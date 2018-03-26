@@ -19,14 +19,8 @@ contract Assertion {
         _;
     }
 
-    function setProfile(string typeOB, string id1, string name1) private { 
-        owner = msg.sender; 
-        id = id1;
-        typeOb = typeOB;
-        name = name1;
-    }
-
-    function Assertion(string _typeOb, string id1, string name1, address issuer1, address badge1, address recipient1) public {
+    function Assertion(string _typeOb, string id1, string name1, 
+                        address issuer1, address badge1, address recipient1) public {
         setProfile(_typeOb, id1, name1);
         issuedOn = now;
         issuer = issuer1;
@@ -50,8 +44,19 @@ contract Assertion {
         verificationType = _verificationType;
     }
 
-    function getProperties() public view returns(string,string,string,string,address,address,address,address,uint) {
-        return(id,typeOb,context,name,owner,recipient,issuer,badge,issuedOn);
+    function getProperties() public view returns(string, string, string, string, 
+                                                address, address, address, address, uint) {
+        return(id, typeOb, context, name, owner, recipient, issuer, badge, issuedOn);
     }
 
+    function kill() public onlyOwner {
+        selfdestruct(msg.sender);
+    }
+
+    function setProfile(string typeOB, string id1, string name1) private { 
+        owner = msg.sender; 
+        id = id1;
+        typeOb = typeOB;
+        name = name1;
+    }
 }

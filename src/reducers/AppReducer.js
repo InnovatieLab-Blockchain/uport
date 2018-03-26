@@ -9,13 +9,13 @@ export default(state = initialState, payload) => {
       return {
         ...state,
         uport: payload.data,
-        //signTransactionPage: true,
+        //signTransactionPage: true, storeScorePage: true,
         getOpenBadgePage: true,
         //revokeCredentialsPage: true,
-        collectCredentialsPage: false,
+        collectCredentialsPage: false
       }
-    
-      case 'GET_BADGE_REQUEST':
+
+    case 'GET_BADGE_REQUEST':
       return {
         ...state,
         gettingBadge: true
@@ -31,7 +31,7 @@ export default(state = initialState, payload) => {
         ...state,
         gettingBadge: false,
         error: payload.data
-      }      
+      }
     case 'GET_ISSUER_REQUEST':
       return {
         ...state,
@@ -49,7 +49,7 @@ export default(state = initialState, payload) => {
         gettingIssuer: false,
         error: payload.data
       }
-      case 'GET_ASSERTION_PROPERTIES_REQUEST':
+    case 'GET_ASSERTION_PROPERTIES_REQUEST':
       return {
         ...state,
         gettingAssertionProperties: true
@@ -67,7 +67,7 @@ export default(state = initialState, payload) => {
         error: payload.data
       }
 
-      case 'GET_RECIPIENT_REQUEST':
+    case 'GET_RECIPIENT_REQUEST':
       return {
         ...state,
         gettingRecipient: true
@@ -84,97 +84,45 @@ export default(state = initialState, payload) => {
         gettingRecipient: false,
         error: payload.data
       }
-
-      case 'GET_BADGE_ID_REQUEST':
+    case 'GET_SCORE_REQUEST':
       return {
         ...state,
-        gettingBadgeId: true
+        gettingScore: true
       }
-    case 'GET_BADGE_ID_SUCCESS':
+    case 'GET_SCORE_SUCCESS':
       return {
         ...state,
-        gettingBadgeId: false,
-        badgeId: payload.data
+        gettingScore: false,
+        scoreProperties: payload.data
       }
-    case 'GET_BADGE_ID_ERROR':
+    case 'GET_SCORE_ERROR':
       return {
         ...state,
-        gettingBadgeId: false,
+        gettingScore: false,
         error: payload.data
-      }  
-
-      case 'GET_BADGE_TYPE_REQUEST':
-      return {
-        ...state,
-        gettingBadgeType: true
       }
-    case 'GET_BADGE_TYPE_SUCCESS':
+    case 'STORE_SCORE_REQUEST':
       return {
         ...state,
-        gettingBadgeType: false,
-        badgeType: payload.data
+        storeScoreInProgress: true
       }
-    case 'GET_BADGE_TYPE_ERROR':
+    case 'STORE_SCORE_PENDING':
+      return {
+        ...state
+      }
+    case 'STORE_SCORE_SUCCESS':
       return {
         ...state,
-        gettingBadgeType: false,
+        storeScoreInProgress: false,
+        score: payload.data
+      }
+    case 'STORE_SCORE_ERROR':
+      return {
+        ...state,
+        storeScoreInProgress: false,
         error: payload.data
-      }  
-
-      case 'GET_BADGE_CONTEXT_REQUEST':
-      return {
-        ...state,
-        gettingBadgeContext: true
       }
-    case 'GET_BADGE_CONTEXT_SUCCESS':
-      return {
-        ...state,
-        gettingBadgeContext: false,
-        badgeContext: payload.data
-      }
-    case 'GET_BADGE_CONTEXT_ERROR':
-      return {
-        ...state,
-        gettingBadgeId: false,
-        error: payload.data
-      }  
-
-      case 'GET_BADGE_NAME_REQUEST':
-      return {
-        ...state,
-        gettingBadgeName: true
-      }
-    case 'GET_BADGE_NAME_SUCCESS':
-      return {
-        ...state,
-        gettingBadgeName: false,
-        badgeName: payload.data
-      }
-    case 'GET_BADGE_NAME_ERROR':
-      return {
-        ...state,
-        gettingBadgeId: false,
-        error: payload.data
-      }  
-    case 'GET_BADGE_ISSUER_REQUEST':
-      return {
-        ...state,
-        gettingBadgeIssuer: true
-      }
-    case 'GET_BADGE_ISSUER_SUCCESS':
-      return {
-        ...state,
-        gettingBadgeIssuer: false,
-        badgeIssuer: payload.data
-      }
-    case 'GET_BADGE_ISSUER_ERROR':
-      return {
-        ...state,
-        gettingBadgeIssuer: false,
-        error: payload.data
-      }  
-
-      case 'GET_BADGE_PROPERTIES_REQUEST':
+    case 'GET_BADGE_PROPERTIES_REQUEST':
       return {
         ...state,
         gettingBadgeProperties: true
@@ -190,28 +138,34 @@ export default(state = initialState, payload) => {
         ...state,
         gettingBadgeProperties: false,
         error: payload.data
-      }  
+      }
 
     case 'BUY_SHARES_DEMO_COMPLETE':
       return {
         ...state,
         collectCredentialsPage: true
       }
-      case 'CREDENTIALS_COLLECT_COMPLETE':
+    case 'CREDENTIALS_COLLECT_COMPLETE':
       return {
         ...state,
         registerYourAppPage: false,
         collectCredentialsPage: false,
-        getOpenBadgePage: true
+        requestCredentialsPage: true
       }
     case 'CREDENTIALS_DEMO_COMPLETE':
       return {
         ...state,
-        registerYourAppPage: false,
         requestCredentialsPage: false,
+        storeScorePage: true,
+        logOutPage: false
+      }
+    case 'STORE_SCORE_DEMO_COMPLETE':
+      return {
+        ...state,
+        storeScorePage: false,
         logOutPage: true
       }
-      case 'GET_OPENBADGE_COMPLETE':
+    case 'GET_OPENBADGE_COMPLETE':
       return {
         ...state,
         getOpenBadgePage: false,
