@@ -1,6 +1,6 @@
 // Frameworks
 import React, { Component } from 'react'
-import { attester1, attester2, attester3 } from '../utilities/uportSetup'
+import { lab_connector } from '../utilities/uportSetup'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -64,29 +64,14 @@ class CollectCredentials extends Component {
   
   credentialsbtnClickA () {
     var badge = this.props.badgeProperties
-    attester1.attestCredentials({
+    lab_connector.attestCredentials({
       sub: this.props.uport.address,
       claim: this.getBadge(),
       exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
       uriHandler: (log) => { console.log(log) }
     })
   }
-  credentialsbtnClickB () {
-    attester2.attestCredentials({
-      sub: this.props.uport.address,
-      claim: {OpenBadge2: {naam: 'OpenBadge2', description: 'Dit is OpenBadge 2' }},
-      exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
-      uriHandler: (log) => { console.log(log) }
-    })
-  }
-  credentialsbtnClickC () {
-    attester3.attestCredentials({
-      sub: this.props.uport.address,
-      claim: {Verblijfsvergunning: {naam: 'Verblijfsvergunning', description: 'Dit is een Verblijfsvergunning'} },
-      exp: new Date().getTime() + 1 * 24 * 60 * 60 * 1000,  // 1 days from now
-      uriHandler: (log) => { console.log(log) }
-    })
-  }
+
 
   render (props) {
     return (
@@ -101,22 +86,6 @@ class CollectCredentials extends Component {
                 </td>
                 <td>
                   <CredsButton onClick={this.credentialsbtnClickA}>Haal op</CredsButton>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <CredsLabel>OpenBadge2</CredsLabel>
-                </td>
-                <td>
-                  <CredsButton onClick={this.credentialsbtnClickB}>Haal op</CredsButton>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <CredsLabel>Verblijfsvergunning</CredsLabel>
-                </td>
-                <td>
-                  <CredsButton onClick={this.credentialsbtnClickC}>Haal op</CredsButton>
                 </td>
               </tr>
             </tbody>

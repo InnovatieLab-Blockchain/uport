@@ -11,9 +11,9 @@ import checkAddressMNID from '../utilities/checkAddressMNID'
 import waitForMined from '../utilities/waitForMined'
 
 import QuizContract from '../utilities/QuizContract'
-import Score from './Score'
+import Badge from './Badge'
 
-import {getScoreProperties, getScoreEvents} from '../utilities/getScore'
+import {getBadgeProperties, getBadgeEvents} from '../utilities/getBadge'
 
 const CredentialsWrap = styled.section`
   @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
@@ -40,16 +40,16 @@ const NextButton = styled.button`
   margin-top: 20px
 `
 
-class StoreScore extends Component {
+class StoreBadge extends Component {
 
   constructor (props) {
     super(props)
-    this.verifyScore = this.verifyScore.bind(this)
-    this.storeScore = this.storeScore.bind(this)
-    this.getTitleAndScore = this.getTitleAndScore.bind(this)
+    this.verifyBadge = this.verifyBadge.bind(this)
+    this.storeBadge = this.storeBadge.bind(this)
+    this.getTitleAndBadge = this.getTitleAndBadge.bind(this)
   }
 
-  verifyScore () {
+  verifyBadge () {
     lab_connector.requestCredentials(
       { verified: ['Blockchainquiz'],
       notifications: true }
@@ -64,7 +64,7 @@ class StoreScore extends Component {
     })
   }
 
-  storeScore () {
+  storeBadge () {
     lab_connector.requestCredentials(
       { verified: ['Blockchainquiz'],
       notifications: true }
@@ -73,17 +73,17 @@ class StoreScore extends Component {
       let address = checkAddressMNID(profile.address)
       const actions = this.props.actions
       let title = profile.Blockchainquiz.Titel
-      let score = Math.floor(profile.Blockchainquiz.Score)
-      actions.storeScoreREQUEST()
-      QuizContract.setScore(address, title, score, {from: address}, (error, txHash) => {
-        if (error) { actions.storeScoreERROR(error) }
+      let score = Math.floor(profile.Blockchainquiz.Badge)
+      actions.storeBadgeREQUEST()
+      QuizContract.setBadge(address, title, score, {from: address}, (error, txHash) => {
+        if (error) { actions.storeBadgeERROR(error) }
         waitForMined(address, txHash, { blockNumber: null }, actions,
           () => {
-            actions.storeScorePENDING()
+            actions.storeBadgePENDING()
           },
           () => {
             console.log('waitForMined complete')
-            actions.storeScoreSUCCESS(txHash)
+            actions.storeBadgeSUCCESS(txHash)
           }
         )
       })
@@ -92,30 +92,30 @@ class StoreScore extends Component {
     })
   }
 
-  getTitleAndScore () {
+  getTitleAndBadge () {
       let address = checkAddressMNID(lab_connector.address)
       const actions = this.props.actions
-      getScoreProperties(actions, address)
-      getScoreEvents()
+      getBadgeProperties(actions, address)
+      getBadgeEvents()
   }
 
 
-  // getTitleAndScore () {
+  // getTitleAndBadge () {
   //   lab_connector.requestCredentials(
   //     { verified: ['Blockchainquiz'],
   //     notifications: true }
   //   ).then((profile) => {
   //     let address = checkAddressMNID(profile.address)
   //     const actions = this.props.actions
-  //     getScoreProperties(actions, address)
+  //     getBadgeProperties(actions, address)
   //   }).catch(err => {
   //     console.log('Niet gedeeld: ', err)
   //   })
   // }
 
-  renderScore() {
+  renderBadge() {
     return (
-      <Score 
+      <Badge 
         scoreProperties={this.props.scoreProperties}
       />
     );
@@ -133,18 +133,18 @@ class StoreScore extends Component {
               <tr>
                 <td style={{'paddingRight': '8em'}}>
                   <CredsLabel>
-                    Score?
+                    Badge?
                   </CredsLabel>
                 </td>
                 <td>
-                  <CredsButton onClick={this.getTitleAndScore}>
-                    Haal Score op
+                  <CredsButton onClick={this.getTitleAndBadge}>
+                    Haal Badge op
                   </CredsButton>
                 </td>
               </tr>
 
             {
-            this.props.storeScoreInProgress
+            this.props.storeBadgeInProgress
               ? (
                 <tr>
                 <td>
@@ -160,24 +160,24 @@ class StoreScore extends Component {
                   <tr>
                   <td style={{'paddingRight': '8em'}}>
                     <CredsLabel>
-                      Score en Titel opslaan
+                      Badge en Titel opslaan
                     </CredsLabel>
                   </td>
                   <td>
-                    <CredsButton onClick={this.storeScore}>
-                      Sla Score op
+                    <CredsButton onClick={this.storeBadge}>
+                      Sla Badge op
                     </CredsButton>
                   </td>
                 </tr>
               )
             }
               </tbody>
-              {this.renderScore}
+              {this.renderBadge}
           </CredsTable>
 
-            {this.renderScore()}
+            {this.renderBadge()}
 
-          <NextButton onClick={this.props.actions.storeScoreDemoComplete}>
+          <NextButton onClick={this.props.actions.storeBadgeDemoComplete}>
             Volgende
           </NextButton>
         </CredentialsArea>
@@ -189,7 +189,7 @@ class StoreScore extends Component {
 const mapStateToProps = (state, props) => {
   return {
     uport: state.App.uport,
-    storeScoreInProgress: state.App.storeScoreInProgress,
+    storeBadgeInProgress: state.App.storeBadgeInProgress,
     scoreProperties: state.App.scoreProperties
   }
 }
@@ -199,4 +199,4 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators(AppActions, dispatch)
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(StoreScore)
+export default connect(mapStateToProps, mapDispatchToProps)(StoreBadge)

@@ -33,36 +33,36 @@ var alignment = ["0xb1bc3a819dca04313c5f6dddd02bac83ec48d88c", "0x6abdb719276ce5
 var badgeClass
 
 contract('BadgeClass', function(accounts) {
-  // it("should set and get the Properties", function() {
-  //   return BadgeClass.at(contractAddress).then(function(instance) {
-  //     badgeClass = instance
-  //     return badgeClass.setProperties(typeOB, id, name, {from: account});
-  //   }).then(function() {
-  //     // If this callback is called, the transaction was successfully processed.
-  //     console.log("setProperties successful!")
-  //     return badgeClass.getName.call({from: account});
-  //   }).then(function(name) {
-  //     console.log(name)
-  //     assert.equal(name, "Dakdekken niveau 2 op Deltion, Zwolle", "naam klopt niet");
-  //   }).catch(function(e) {
-  //     console.log(e)
-  //   })
-  // });
-  // it("should set and get the Issuer", function() {
-  //   return BadgeClass.at(contractAddress).then(function(instance) {
-  //     badgeClass = instance
-  //     return badgeClass.setIssuer(issuer, {from: account});
-  //   }).then(function() {
-  //     // If this callback is called, the transaction was successfully processed.
-  //     console.log("setIssuer successful!")
-  //     return badgeClass.getIssuer.call({from: account});
-  //   }).then(function(name) {
-  //     console.log(name)
-  //     assert.equal(name, issuer, "adres klopt niet");
-  //   }).catch(function(e) {
-  //     console.log(e)
-  //   })
-  // });
+  it("should set and get the Properties", function() {
+    return BadgeClass.at(contractAddress).then(function(instance) {
+      badgeClass = instance
+      return badgeClass.setProperties(typeOB, id, name, {from: account});
+    }).then(function() {
+      // If this callback is called, the transaction was successfully processed.
+      console.log("setProperties successful!")
+      return badgeClass.getName.call({from: account});
+    }).then(function(name) {
+      console.log(name)
+      assert.equal(name, "Dakdekken niveau 2 op Deltion, Zwolle", "naam klopt niet");
+    }).catch(function(e) {
+      console.log(e)
+    })
+  });
+  it("should set and get the Issuer", function() {
+    return BadgeClass.at(contractAddress).then(function(instance) {
+      badgeClass = instance
+      return badgeClass.setIssuer(issuer, {from: account});
+    }).then(function() {
+      // If this callback is called, the transaction was successfully processed.
+      console.log("setIssuer successful!")
+      return badgeClass.getIssuer.call({from: account});
+    }).then(function(name) {
+      console.log(name)
+      assert.equal(name, issuer, "adres klopt niet");
+    }).catch(function(e) {
+      console.log(e)
+    })
+  });
   it("should get the AlignmentObjects", function() {
     return BadgeClass.at(contractAddress).then(function(instance) {
       badgeClass = instance

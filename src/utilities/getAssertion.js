@@ -1,4 +1,14 @@
-import AssertionContract from './AssertionContract'
+import EthereumContract from './EthereumContract'
+//import { web3 } from './uportSetup'
+const Web3 = require('web3')
+const ganache = new Web3.providers.HttpProvider("http://localhost:7545")
+const web3 = new Web3(ganache);
+const contractAddress = '0x30753e4a8aad7f8597332e813735def5dd395028'
+const abi = require('../../build/contracts/Assertion.json').abi
+
+const AssertionContract = EthereumContract(web3,abi,contractAddress)
+
+console.log(AssertionContract)
 
 export async function getBadge(actions) {
   actions.getBadgeREQUEST()
@@ -52,35 +62,3 @@ export async function getAssertionProperties(actions) {
       return props
     })
 }
-
-
-// function Unix_timestamp(t)
-// {
-//   var dt = new Date(t*1000);
-//   var m = dt.getMonth();
-//   var d = dt.getDay();
-//   var y = dt.getFullYear();
-//   return d + '-' + m + '-' + y;  
-// }
-
-// async function getIssuedOn() {
-//   AssertionContract.issuedOn
-//     .call((error, issuedOn) => {
-//       if (error) {
-//         throw error
-//       }
-//       return Unix_timestamp(issuedOn)
-//     })
-// }
-
-// async function getVerificationType() {
-//   AssertionContract.verificationType
-//     .call((error, verificationType) => {
-//       if (error) {
-//         throw error
-//       }
-//       return verificationType
-//     })
-// }
-
-//export default getBadge , getRecipient, getIssuer  //, getIssuedOn, getVerificationType }

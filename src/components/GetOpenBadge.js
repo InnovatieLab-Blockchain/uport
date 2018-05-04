@@ -43,6 +43,7 @@ class GetOpenBadge extends Component {
     getBadge(actions)
     getRecipient(actions)
     getIssuer(actions)
+    
     //getAssertionProperties(actions)
   }
 

@@ -13,3 +13,18 @@ export async function getScoreProperties(actions, address) {
       return props
     })
 }
+
+export async function getScoreEvents() {
+  //actions.getScoreEventsREQUEST()
+  var scoreEventAll = QuizContract.Scored({}, {fromBlock: 1998837, toBlock: 1999811})
+  scoreEventAll.watch(function(err, result) {
+    if (err) {
+      console.log(err)
+      return;
+    }
+    // append details of result.args to UI
+    console.log("Events: ", result)
+
+  })
+
+}
